@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>SignIn</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="auth">
+        <h1 class="auth__title m-0">FocusFlow ∞</h1>
+        <p class="auth__subtitle">Welcome back</p>
+        <p class="auth__description">Sign in to continue to FocusFlow</p>
+
+        <form class="form form__auth-container js-form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input
+              class="form__input"
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              placeholder="you@example.com"
+            />
+            <div class="form__error is-hidden">Invalid email</div>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="password">Password</label>
+            <div class="form__input-wrap">
+              <input
+                class="form__input"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+              />
+              <button class="form__toggle js-toggle" type="button">👁</button>
+            </div>
+            <div class="form__error is-hidden">Wrong credentials</div>
+          </div>
+
+          <div class="form__additional">
+            <label class="form__checkbox"
+              ><input type="checkbox" name="remember" /> Remember me</label
+            >
+            <a class="form__link" href="./forgot.html">Forgot?</a>
+          </div>
+
+          <button class="btn btn__primary js-submit" type="submit">
+            Sign in
+          </button>
+          <div class="form__meta">
+            Don't have an account?
+            <a class="form__link" href="./register.html">Sign up</a>
+          </div>
+
+          <div class="form__alert form__alert-error is-hidden mt-4">Server error</div>
+          <div class="alert form__alert-info is-hidden mt-4">Loading…</div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: grid;
+  gap: 8px;
+  z-index: 100;
+}
+.toast__item {
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}

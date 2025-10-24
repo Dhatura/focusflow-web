@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <title>FocusFlow</title>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
+
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
+
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
+
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
+        </div>
+
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif-item" data-id="n1">
+              <div class="notif-item__title">You were mentioned</div>
+              <div class="notif-item__meta">2m ago</div>
+            </li>
+            <li class="notif-item" data-id="n2">
+              <div class="notif-item__title">New project invite</div>
+              <div class="notif-item__meta">10m ago</div>
+            </li>
+          </ul>
+          <div class="notif__actions">
+            <button class="btn btn--sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a
+            class="sidebar__link sidebar__link_active"
+            href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a class="sidebar__link" href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a class="sidebar__link" href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <a class="sidebar__link" href="/src/pages/settings/index.html"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="main">
+        <!-- page-specific content -->
+      </main>
+    </div>
+
+    <!-- Тосты (скрыты) -->
+    <div class="toast is-hidden">
+      <div class="toast__item">Saved successfully</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>Fogot Password</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="auth">
+        <h1 class="auth__title m-0">FocusFlow ∞</h1>
+        <p class="auth__subtitle">Reset password</p>
+        <p class="auth__description">Enter your email to receive a reset link</p>
+
+        <form class="form form__auth-container js-form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input
+              class="form__input"
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              placeholder="you@example.com"
+            />
+            <div class="form__error is-hidden">Enter a valid email</div>
+          </div>
+
+          <button class="btn btn__primary js-submit" type="submit">
+            Send reset link
+          </button>
+
+          <div class="form__meta">
+            Remembered your password?
+            <a class="form__link" href="./login.html">Back to Sign in</a>
+          </div>
+
+          <div class="form__alert form__alert-error is-hidden mt-4">Email not found</div>
+          <div class="alert form__alert-info is-hidden mt-4">Sending reset link…</div>
+        </form>
+      </section>
+    </main>
+
+        <!-- Toasts -->
+    <div class="toast is-hidden">
+      <div class="toast__item">Email sent</div>
+    </div>
+  </body>
+</html>

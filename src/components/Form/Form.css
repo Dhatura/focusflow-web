@@ -1,0 +1,75 @@
+.form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.form__auth-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-4);
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-text-muted);
+}
+
+/* заменить в других html form-field_control на form__input*/
+.form__input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+}
+
+.form__error {
+  margin-top: 6px;
+  color: var(--color-danger);
+  font-size: var(--fs-sm);
+}
+
+.form__input-wrap {
+  position: relative;
+}
+
+.form__toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.form__additional {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.form__meta {
+  color: var(--color-text-muted);
+  justify-self: center;
+}
+
+.form__alert {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+}
+.form__alert-error {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ffb3b3;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+}
+.form__alert-info {
+  background: rgba(124, 92, 255, 0.15);
+  color: #c9c0ff;
+  border: 1px solid rgba(124, 92, 255, 0.4);
+}

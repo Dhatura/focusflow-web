@@ -1,0 +1,76 @@
+@import "./normalize.css";
+@import url("./tokens.css");
+
+/* БАЗА: сброс, типографика, фон, общие правила */
+html,
+body {
+  height: 100%;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* Заголовки */
+h1 {
+  font-size: var(--fs-xxl);
+  margin: var(--space-6) 0 var(--space-4);
+}
+h2 {
+  font-size: var(--fs-xl);
+  margin: var(--space-5) 0 var(--space-3);
+}
+h3 {
+  font-size: var(--fs-lg);
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+/* Линки */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Утилиты */
+.container {
+  width: min(1200px, 100% - 32px);
+  margin: 0 auto;
+}
+.is-hidden {
+  display: none !important;
+}
+.m-0 {
+  margin: 0 !important;
+}
+.mt-4 {
+  margin-top: var(--space-4) !important;
+}
+
+.section {
+  margin: var(--space-6) 0;
+}
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.section__title {
+  margin: 0;
+}

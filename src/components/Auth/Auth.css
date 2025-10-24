@@ -1,0 +1,32 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.auth__title {
+  align-self: center;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: linear-gradient(
+    45deg,
+    var(--color-accent),
+    var(--color-accent-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.auth__subtitle {
+  color: var(--color-text);
+  margin: 15px 0 10px;
+  align-self: center;
+}
+
+.auth__description {
+  color: var(--color-text-muted);
+  margin: 0 0 30px;
+  align-self: center;
+}
