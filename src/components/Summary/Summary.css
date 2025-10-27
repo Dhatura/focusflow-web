@@ -1,0 +1,36 @@
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(324px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.summary__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--space-5);
+}
+.summary__card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.summary__card-title {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+.summary__card-value {
+  font-size: 36px;
+  font-weight: 700;
+}
+.summary__card-value_danger {
+  color: var(--color-danger);
+}
+.summary__card-value_success {
+  color: var(--color-success);
+}
+.summary__card_desc {
+  color: var(--color-text-muted);
+}

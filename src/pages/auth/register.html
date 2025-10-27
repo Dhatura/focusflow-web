@@ -7,7 +7,7 @@
     <title>Register</title>
   </head>
   <body>
-    <main class="container">
+    <main>
       <section class="auth">
         <h1 class="auth__title m-0">FocusFlow ∞</h1>
         <p class="auth__subtitle">Create account</p>
@@ -24,9 +24,7 @@
               placeholder="Enter your name"
               required
             />
-            <div class="form__error is-hidden">
-              Please enter your name
-            </div>
+            <div class="form__error is-hidden">Please enter your name</div>
           </div>
 
           <div class="form__field">
@@ -59,7 +57,8 @@
               <button
                 class="form__toggle js-toggle"
                 type="button"
-                aria-label="Toggle password visibility">
+                aria-label="Toggle password visibility"
+              >
                 👁
               </button>
             </div>
@@ -82,7 +81,8 @@
               <button
                 class="form__toggle js-toggle"
                 type="button"
-                aria-label="Toggle password visibility">
+                aria-label="Toggle password visibility"
+              >
                 👁
               </button>
             </div>
@@ -99,8 +99,12 @@
           </div>
 
           <!-- Глобальные состояния формы (через JS классом) -->
-          <div class="form__alert form__alert-error is-hidden mt-4">Server error</div>
-          <div class="alert form__alert-info is-hidden mt-4">Creating account…</div>
+          <div class="form__alert form__alert-error is-hidden mt-4">
+            Server error
+          </div>
+          <div class="alert form__alert-info is-hidden mt-4">
+            Creating account…
+          </div>
         </form>
       </section>
     </main>

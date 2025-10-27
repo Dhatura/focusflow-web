@@ -1,0 +1,325 @@
+/* ==========================
+   Task Modal — BEM (Light)
+   ========================== */
+
+/* Tokens */
+:root {
+  --bg: #f6f7fb;
+  --overlay: rgba(15, 15, 20, 0.55);
+  --surface: #ffffff;
+  --elev: #f6f7fb;
+  --border: #e6e8f0;
+  --text: #1b1f29;
+  --muted: #6b7280;
+  --primary: #7c5cff;
+  --primary-weak: #ede9fe;
+  --danger: #ef4444;
+  --radius-lg: 18px;
+  --radius: 12px;
+  --radius-sm: 10px;
+  --shadow: 0 30px 80px rgba(16, 24, 40, 0.18);
+  --fs: 15px;
+  --fs-sm: 13px;
+  --fs-lg: 18px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+.overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal root */
+.task-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+.task-modal--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.task-modal__dialog {
+  width: min(960px, 94vw);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-lg) + 2px);
+  box-shadow: var(--shadow);
+  padding: var(--space-6);
+}
+
+/* Header */
+.task-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.task-modal__title-input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font:
+    600 20px/1.4 ui-sans-serif,
+    system-ui,
+    Inter,
+    Segoe UI;
+  color: var(--text);
+  outline: none;
+}
+.task-modal__close {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Body grid */
+.task-modal__body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+}
+.task-modal__col--left {
+  min-width: 0;
+}
+.task-modal__col--right {
+  min-width: 0;
+}
+
+/* Sections & labels */
+.task-modal__section {
+  margin-bottom: var(--space-6);
+}
+.task-modal__label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs);
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.task-modal__label-icon {
+  color: var(--muted);
+}
+
+/* Inputs */
+.task-modal__textarea,
+.task-modal__input,
+.task-modal__select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: var(--fs);
+  outline: none;
+}
+.task-modal__textarea::placeholder,
+.task-modal__input::placeholder {
+  color: var(--muted);
+}
+
+.task-modal__select-wrap {
+  position: relative;
+}
+.task-modal__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+}
+.task-modal__select-caret {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.task-modal__input-icon {
+  position: relative;
+}
+.task-modal__input-addon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+/* Buttons */
+.task-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  font-size: var(--fs);
+}
+.task-modal__btn--sm {
+  height: 34px;
+  font-size: var(--fs-sm);
+}
+.task-modal__btn--lg {
+  height: 42px;
+  font-weight: 600;
+}
+.task-modal__btn--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.task-modal__btn--ghost {
+  background: #fff;
+}
+
+/* Checklist */
+.task-modal__checklist-input {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+.task-modal__checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.task-modal__checkitem-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.task-modal__checkbox {
+  width: 16px;
+  height: 16px;
+}
+.task-modal__checkitem-text {
+  color: var(--text);
+}
+
+/* Dropzone */
+.task-modal__dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--elev);
+  padding: var(--space-6);
+  text-align: center;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+.task-modal__dropzone-icon {
+  font-size: 28px;
+  color: var(--muted);
+}
+.task-modal__dropzone-title {
+  color: var(--muted);
+}
+
+/* Field (right column) */
+.task-modal__field {
+  margin-bottom: var(--space-5);
+}
+.task-modal__field-label {
+  font-size: var(--fs-sm);
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Tags */
+.task-modal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.task-modal__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--primary-weak);
+  color: #5b46d9;
+  font-size: var(--fs-sm);
+}
+.task-modal__tag--add {
+  background: #f2f3f9;
+  color: #4b5563;
+  border: 1px dashed var(--border);
+}
+
+/* Assignees */
+.task-modal__assignees {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.task-modal__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #111827;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.task-modal__avatar--add {
+  background: #fff;
+  color: #4b5563;
+  border: 1px dashed var(--border);
+  cursor: pointer;
+}
+
+/* Comment row */
+.task-modal__comment-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+/* CTA bottom */
+.task-modal__cta {
+  margin-top: var(--space-6);
+}

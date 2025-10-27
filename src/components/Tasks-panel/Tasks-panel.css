@@ -1,0 +1,49 @@
+.tasks-panel {
+  grid-area: tasks;
+  min-height: 420px;
+}
+.tasks-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tasks-panel__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+.tasks-panel__tabs {
+  margin-top: 14px;
+}
+.tasks-panel__control {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 140px;
+  margin-top: 14px;
+}
+.tasks-panel__search {
+  display: block;
+  background: var(--color-elev);
+  border-radius: 999px;
+}
+.tasks-panel__search-input {
+  padding: 10px 12px;
+  border: none;
+  background: var(--color-elev);
+  color: var(--color-text);
+  outline: none;
+  border-radius: 999px;
+}
+.tasks-panel__filter {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  min-width: 140px;
+  padding: 10px 12px;
+  border: none;
+  background: var(--color-elev);
+  color: var(--color-text);
+  outline: none;
+  border-radius: 999px;
+}

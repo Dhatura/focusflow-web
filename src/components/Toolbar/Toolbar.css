@@ -1,0 +1,23 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.toolbar__search {
+  width: 220px;
+  padding: 8px 10px;
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+}
+
+.toolbar__select {
+  padding: 8px 10px;
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+}

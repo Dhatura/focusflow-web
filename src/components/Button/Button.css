@@ -18,11 +18,43 @@
   border-color: transparent;
   color: white;
 }
-.btn--sm {
+.btn__sm {
   padding: 6px 10px;
   font-size: var(--fs-sm);
 }
+.btn__lg {
+  height: 42px;
+  width: 150px;
+  font-weight: 600;
+}
+
 .btn[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.btn__close {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.btn__ghost {
+  background: var(--color-surface);
+}
+
+.btn__add {
+  background: var(--color-accent-weak);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.btn__icon {
+  width: 44px;
 }

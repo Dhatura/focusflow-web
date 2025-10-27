@@ -48,10 +48,10 @@ a:hover {
 }
 
 /* Утилиты */
-.container {
+/* .container {
   width: min(1200px, 100% - 32px);
   margin: 0 auto;
-}
+} */
 .is-hidden {
   display: none !important;
 }

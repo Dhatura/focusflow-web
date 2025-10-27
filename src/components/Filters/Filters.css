@@ -1,0 +1,20 @@
+/* .filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.filters__search {
+  width: 220px;
+  padding: 8px 10px;
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+}
+.filters__select {
+  padding: 8px 10px;
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+} */

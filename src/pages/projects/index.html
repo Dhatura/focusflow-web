@@ -1,0 +1,108 @@
+<main class="main container">
+  <div class="section">
+    <div class="section__header">
+      <h1 class="section__title">Projects</h1>
+      <button class="btn btn--primary js-open-modal">+ Create project</button>
+    </div>
+
+    <div class="filters mt-4">
+      <select class="filters__select js-filter-role">
+        <option>All</option>
+        <option>Owner</option>
+        <option>Member</option>
+      </select>
+      <select class="filters__select js-filter-archive">
+        <option>Active</option>
+        <option>Archived</option>
+      </select>
+      <input class="filters__search js-search" placeholder="Search projects…" />
+    </div>
+  </div>
+  /* переписать grid grid--projects, они находятся в list.css*/
+  <ul class="grid grid--projects mt-4 js-list">
+    <li class="grid__item">
+      <article class="project-card" data-id="p1">
+        <h3 class="project-card__title">Project Alpha</h3>
+        <div class="project-card__meta">Owner: You • Due: 2025-11-01</div>
+        <div class="project-card__progress">[####----] 50%</div>
+        <div class="project-card__actions" style="display: flex; gap: 8px">
+          <a class="btn btn--sm" href="./board.html?project=p1">Open Board</a>
+          <button class="btn btn--sm js-toggle">Mini-chat</button>
+        </div>
+        <div class="project-card__chat chat js-chat is-hidden card">
+          <ul class="list chat__list">
+            <li class="list__item"><b>You:</b> Hi!</li>
+            <li class="list__item"><b>Mate:</b> Hello!</li>
+          </ul>
+          <form class="chat__form js-form" style="display: flex; gap: 8px">
+            <input
+              class="form-field__control chat__input"
+              placeholder="Type message…"
+            />
+            <button class="btn btn--sm js-submit">Send</button>
+          </form>
+        </div>
+      </article>
+    </li>
+    <!-- добавь ещё несколько карточек -->
+  </ul>
+
+  <div class="pagination">
+    <button class="btn btn--sm">Prev</button>
+    <span class="pagination__info">1 / 5</span>
+    <button class="btn btn--sm">Next</button>
+  </div>
+
+  <!-- Create Project Modal -->
+  <div
+    class="modal modal--project-create js-modal is-hidden"
+    aria-hidden="true"
+  >
+    <div class="modal__dialog">
+      <h3 class="modal__title">Create Project</h3>
+      <form class="form form--project js-form">
+        <div class="form-field">
+          <label class="form-field__label">Name*</label>
+          <input class="form-field__control" name="name" required />
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Description</label>
+          <textarea class="form-field__control" name="description"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Tags</label>
+          <input
+            class="form-field__control"
+            name="tags"
+            placeholder="comma,separated"
+          />
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Privacy</label>
+          <select class="form-field__control" name="privacy">
+            <option>Private</option>
+            <option>Team</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Invite users</label>
+          <input
+            class="form-field__control"
+            name="invite"
+            placeholder="email or username"
+          />
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Due date</label>
+          <input class="form-field__control" type="date" name="due" />
+        </div>
+        <div class="modal__actions">
+          <button class="btn" type="button">Cancel</button>
+          <button class="btn btn--primary js-submit" type="submit">
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

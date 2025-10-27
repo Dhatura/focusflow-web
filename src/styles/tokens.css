@@ -1,6 +1,6 @@
 :root {
   /* Palette */
-  --color-bg: #f6f8fb;
+  --color-bg: #f6f7fb;
   --color-surface: #ffffff;
   --color-elev: #f2f4f8;
   --color-border: #dfe3ec;
@@ -8,9 +8,11 @@
   --color-text-muted: #5b6476;
   --color-accent: #7c5cff; /* фиолетовый (основной) */
   --color-accent-2: #4ea1ff; /* голубой (вторичный) */
-  --color-success: #29d398;
+  --color-accent-weak: #ede9fe;
+  --color-success: #10b981;
   --color-warn: #ffcc66;
-  --color-danger: #ff6b6b;
+  --color-danger: #ef4444;
+  --color-overlay: rgba(15, 15, 20, 0.55);
 
   /* Typography */
   --font-sans:

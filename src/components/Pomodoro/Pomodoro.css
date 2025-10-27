@@ -1,0 +1,35 @@
+.pomodoro {
+  grid-area: pomodoro;
+  height: 374px;
+}
+.pomodoro__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+.pomodoro__tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 14px;
+}
+
+.pomodoro__dial {
+  --ring: conic-gradient(var(--color-accent) 0 25%, #eee 25% 100%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(#fff 58%, transparent 59%), var(--ring);
+  margin: var(--space-5) auto;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 12px #fff;
+}
+.pomodoro__time {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.pomodoro__controls {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 8px;
+}
