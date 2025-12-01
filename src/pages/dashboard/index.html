@@ -6,515 +6,575 @@
     <link rel="stylesheet" href="../../styles/main.css" />
     <title>FocusFlow</title>
   </head>
-  <body class="layout">
-    <header class="header">
-      <div class="header__logo">FocusFlow ∞</div>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
 
-      <form class="header__search">
-        <input class="header__search-input js-search" placeholder="Search…" />
-      </form>
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
 
-      <button class="header__btn js-notif">
-        🔔 <span class="header__badge">2</span>
-      </button>
-      <button class="header__btn js-theme">🌓</button>
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
 
-      <div class="header__user">
-        U
-        <div class="header__menu is-hidden">
-          <a href="/src/pages/profile/index.html">Profile</a>
-          <a href="/src/pages/settings/index.html">Settings</a>
-          <button class="js-logout">Log out</button>
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
         </div>
-      </div>
 
-      <!-- Выпадающий список уведомлений (скрыт) -->
-      <div class="notif js-notif is-hidden">
-        <div class="notif__header">Notifications</div>
-        <ul class="notif__list">
-          <li class="notif__item" data-id="n1">
-            <div class="notif__item-title">You were mentioned</div>
-            <div class="notif__item-meta">2m ago</div>
-          </li>
-          <li class="notif__item" data-id="n2">
-            <div class="notif__item-title">New project invite</div>
-            <div class="notif__item-meta">10m ago</div>
-          </li>
-        </ul>
-        <div class="notif__actions">
-          <button class="btn btn__sm">Clear all</button>
-        </div>
-      </div>
-    </header>
-
-    <aside class="sidebar">
-      <nav class="sidebar__nav">
-        <a
-          class="sidebar__link sidebar__link_active"
-          href="/src/pages/dashboard/index.html"
-          >Dashboard</a
-        >
-        <a class="sidebar__link" href="/src/pages/projects/index.html"
-          >Projects</a
-        >
-        <a class="sidebar__link" href="/src/pages/habits/index.html">Habits</a>
-        <a class="sidebar__link" href="/src/pages/profile/index.html"
-          >Profile</a
-        >
-        <a class="sidebar__link" href="/src/pages/settings/index.html"
-          >Settings</a
-        >
-      </nav>
-    </aside>
-
-    <main class="dashboard main">
-      <section class="dashboard__intro">
-        <h1 class="dashboard__title">Dashboard</h1>
-        <p class="dashboard__subtitle">
-          Welcome back! Here’s what you need to focus on today.
-        </p>
-      </section>
-
-      <!-- summary cards -->
-      <section class="summary" aria-label="Stats summary">
-        <article class="summary__card">
-          <div class="summary__card-row">
-            <h2 class="summary__card-title">Today’s Tasks</h2>
-            <span class="summary__card-icon">🕒</span>
-          </div>
-          <div class="summary__card-value">0</div>
-          <div class="summary__card_desc">tasks</div>
-        </article>
-
-        <article class="summary__card">
-          <div class="summary__card-row">
-            <h2 class="summary__card-title">Overdue</h2>
-            <span class="summary__card-icon">⛔</span>
-          </div>
-          <div class="summary__card-value summary__card-value_danger">6</div>
-          <div class="summary__card_desc">tasks</div>
-        </article>
-
-        <article class="summary__card">
-          <div class="summary__card-row">
-            <h2 class="summary__card-title">Completed</h2>
-            <span class="summary__card-icon">✅</span>
-          </div>
-          <div class="summary__card-value summary__card-value_success">1</div>
-          <div class="summary__card_desc">this week</div>
-        </article>
-      </section>
-
-      <div class="dashboard__grid">
-        <!-- My Tasks panel -->
-        <section class="tasks-panel card">
-          <div class="tasks-panel__header">
-            <h2 class="tasks-panel__title">My Tasks</h2>
-            <button class="btn btn__primary btn__sm" type="button">
-              + New Task
-            </button>
-          </div>
-
-          <div
-            class="tasks-panel__tabs tabs"
-            role="tablist"
-            aria-label="Task ranges"
-          >
-            <button
-              class="tabs__btn tabs__btn_active"
-              role="tab"
-              aria-selected="true"
-            >
-              Today
-            </button>
-            <button class="tabs__btn" role="tab" aria-selected="false">
-              Upcoming <span class="tabs__badge">2</span>
-            </button>
-            <button class="tabs__btn" role="tab" aria-selected="false">
-              Overdue <span class="tabs__badge tabs__badge_danger">6</span>
-            </button>
-          </div>
-
-          <div class="tasks-panel__control">
-            <div class="tasks-panel__search">
-              <span class="search__icon" aria-hidden="true">🔎</span>
-              <input
-                class="tasks-panel__search-input"
-                type="search"
-                placeholder="Search tasks…"
-              />
-            </div>
-            <div class="tasks-panel__filter">
-              <span class="tasks-panel__filter-icon" aria-hidden="true">⛛</span>
-              <button class="btn btn__sm" type="button">All</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Pomodoro -->
-        <section class="pomodoro card">
-          <h2 class="pomodoro__title" id="pomodoro-title">Pomodoro Timer</h2>
-
-          <div
-            class="pomodoro__tabs tabs"
-            role="tablist"
-            aria-label="Pomodoro modes"
-          >
-            <button
-              class="tabs__btn tabs__btn_active"
-              role="tab"
-              aria-selected="true"
-            >
-              Work
-            </button>
-            <button class="tabs__btn" role="tab" aria-selected="false">
-              Short
-            </button>
-            <button class="tabs__btn" role="tab" aria-selected="false">
-              Long
-            </button>
-          </div>
-
-          <div class="pomodoro__dial" aria-label="25 minutes">
-            <div class="pomodoro__time">25:00</div>
-          </div>
-
-          <div class="pomodoro__controls">
-            <button class="btn btn__primary" type="button">▶ Start</button>
-            <button
-              class="btn btn__ghost btn__icon"
-              type="button"
-              title="Reset"
-            >
-              ⟲
-            </button>
-          </div>
-        </section>
-
-        <!-- Quick Actions -->
-        <section class="quick card" aria-label="Quick actions">
-          <h2 class="quick__title">Quick Actions</h2>
-          <div class="quick__grid">
-            <button class="quick__item" type="button">
-              <span class="quick__icon" aria-hidden="true">＋</span>
-              <span class="quick__label">New Task</span>
-            </button>
-            <button class="quick__item" type="button">
-              <span class="quick__icon" aria-hidden="true">＋</span>
-              <span class="quick__label">New Project</span>
-            </button>
-            <button class="quick__item" type="button">
-              <span class="quick__icon" aria-hidden="true">⤓</span>
-              <span class="quick__label">Import</span>
-            </button>
-          </div>
-        </section>
-
-        <!-- Active Projects -->
-        <section class="active-projects card">
-          <div class="active-projects__header">
-            <h2 class="active-projects__title">Active Projects</h2>
-            <a class="active-projects__link" href="#">View all</a>
-          </div>
-
-          <ul class="active-projects__list">
-            <li class="active-projects__item">
-              <span class="active-projects__name">Mobile App Redesign</span>
-              <span class="active-projects__percent">68%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 68%"></span>
-              </span>
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif__item" data-id="n1">
+              <div class="notif__item-title">You were mentioned</div>
+              <div class="notif__item-meta">2m ago</div>
             </li>
-            <li class="active-projects__item">
-              <span class="active-projects__name">Backend API v3</span>
-              <span class="active-projects__percent">42%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 42%"></span>
-              </span>
-            </li>
-            <li class="active-projects__item">
-              <span class="active-projects__name">Marketing Campaign Q4</span>
-              <span class="active-projects__percent">85%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 85%"></span>
-              </span>
-            </li>
-            <li class="active-projects__item">
-              <span class="active-projects__name">Design System 2.0</span>
-              <span class="active-projects__percent">55%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 55%"></span>
-              </span>
-            </li>
-            <li class="active-projects__item">
-              <span class="active-projects__name">Design System 2.0</span>
-              <span class="active-projects__percent">55%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 55%"></span>
-              </span>
-            </li>
-            <li class="active-projects__item">
-              <span class="active-projects__name">Design System 2.0</span>
-              <span class="active-projects__percent">55%</span>
-              <span class="active-projects__bar">
-                <span class="active-projects__bar-fill" style="--w: 55%"></span>
-              </span>
+            <li class="notif__item" data-id="n2">
+              <div class="notif__item-title">New project invite</div>
+              <div class="notif__item-meta">10m ago</div>
             </li>
           </ul>
+          <div class="notif__actions">
+            <button class="btn btn__sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a
+            class="sidebar__link sidebar__link_active"
+            href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a class="sidebar__link" href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a class="sidebar__link" href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <!-- ВАЖНО: пока что открывается с хэшем: /index.html#profile -->
+          <a class="sidebar__link" href="/src/pages/settings/index.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="dashboard main">
+        <section class="dashboard__intro">
+          <h1 class="dashboard__title">Dashboard</h1>
+          <p class="dashboard__subtitle">
+            Welcome back! Here’s what you need to focus on today.
+          </p>
         </section>
-      </div>
 
-      <!-- Overlay + Modal: статично (скрытие/показ позже сделаем JS) -->
-      <article class="modal js-modal" aria-hidden="true">
-        <div class="new-task-modal">
-          <!-- Header -->
-          <header class="new-task-modal__header">
-            <input
-              class="new-task-modal__title-input"
-              value="Task title"
-              aria-label="Task title"
-            />
-            <button
-              class="btn__close js-close"
-              type="button"
-              aria-label="Close"
+        <!-- summary cards -->
+        <section class="summary" aria-label="Stats summary">
+          <article class="summary__card">
+            <div class="summary__card-row">
+              <h2 class="summary__card-title">Today’s Tasks</h2>
+              <span class="summary__card-icon">🕒</span>
+            </div>
+            <div class="summary__card-value">0</div>
+            <div class="summary__card_desc">tasks</div>
+          </article>
+
+          <article class="summary__card">
+            <div class="summary__card-row">
+              <h2 class="summary__card-title">Overdue</h2>
+              <span class="summary__card-icon">⛔</span>
+            </div>
+            <div class="summary__card-value summary__card-value_danger">6</div>
+            <div class="summary__card_desc">tasks</div>
+          </article>
+
+          <article class="summary__card">
+            <div class="summary__card-row">
+              <h2 class="summary__card-title">Completed</h2>
+              <span class="summary__card-icon">✅</span>
+            </div>
+            <div class="summary__card-value summary__card-value_success">1</div>
+            <div class="summary__card_desc">this week</div>
+          </article>
+        </section>
+
+        <div class="dashboard__grid">
+          <!-- My Tasks panel -->
+          <section class="tasks-panel card">
+            <div class="tasks-panel__header">
+              <h2 class="tasks-panel__title">My Tasks</h2>
+              <button class="btn btn__primary btn__sm" type="button">
+                + New Task
+              </button>
+            </div>
+
+            <div
+              class="tasks-panel__tabs tabs"
+              role="tablist"
+              aria-label="Task ranges"
             >
-              ×
-            </button>
-          </header>
+              <button
+                class="tabs__btn tabs__btn_active"
+                role="tab"
+                aria-selected="true"
+              >
+                Today
+              </button>
+              <button class="tabs__btn" role="tab" aria-selected="false">
+                Upcoming <span class="tabs__badge">2</span>
+              </button>
+              <button class="tabs__btn" role="tab" aria-selected="false">
+                Overdue <span class="tabs__badge tabs__badge_danger">6</span>
+              </button>
+            </div>
 
-          <main class="new-task-modal__main">
-            <!-- LEFT COLUMN -->
-            <div class="new-task-modal__col-left">
-              <!-- Description -->
-              <form>
-                <label class="new-task-modal__title" for="description"
-                  >Description</label
+            <div class="tasks-panel__control">
+              <div class="tasks-panel__search">
+                <span class="search__icon" aria-hidden="true">🔎</span>
+                <input
+                  class="tasks-panel__search-input"
+                  type="search"
+                  placeholder="Search tasks…"
+                />
+              </div>
+              <div class="tasks-panel__filter">
+                <span class="tasks-panel__filter-icon" aria-hidden="true"
+                  >⛛</span
                 >
-                <textarea
-                  class="new-task-modal__textarea"
-                  rows="4"
-                  placeholder="Add a detailed description..."
-                  aria-label="Description"
-                  id="description"
-                ></textarea>
-              </form>
+                <button class="btn btn__sm" type="button">All</button>
+              </div>
+            </div>
+          </section>
 
-              <!-- Checklist -->
-              <form>
-                <div class="new-task-modal__section-row">
-                  <label class="new-task-modal__title">
-                    <span class="new-task-modal__icon" aria-hidden="true"
-                      >☑</span
-                    >
-                    Checklist
-                  </label>
-                </div>
+          <!-- Pomodoro -->
+          <section class="pomodoro card">
+            <h2 class="pomodoro__title" id="pomodoro-title">Pomodoro Timer</h2>
 
-                <div class="new-task-modal__checklist-form">
-                  <input
-                    class="form__input form__input_white"
-                    type="text"
-                    placeholder="Add checklist item..."
-                    aria-label="Checklist item"
-                  />
-                  <button
-                    class="btn btn__primary js-add-checkitem"
-                    type="button"
+            <div
+              class="pomodoro__tabs tabs"
+              role="tablist"
+              aria-label="Pomodoro modes"
+            >
+              <button
+                class="tabs__btn tabs__btn_active"
+                role="tab"
+                aria-selected="true"
+              >
+                Work
+              </button>
+              <button class="tabs__btn" role="tab" aria-selected="false">
+                Short
+              </button>
+              <button class="tabs__btn" role="tab" aria-selected="false">
+                Long
+              </button>
+            </div>
+
+            <div class="pomodoro__dial" aria-label="25 minutes">
+              <div class="pomodoro__time">25:00</div>
+            </div>
+
+            <div class="pomodoro__controls">
+              <button class="btn btn__primary" type="button">▶ Start</button>
+              <button
+                class="btn btn__ghost btn__icon"
+                type="button"
+                title="Reset"
+              >
+                ⟲
+              </button>
+            </div>
+          </section>
+
+          <!-- Quick Actions -->
+          <section class="quick card" aria-label="Quick actions">
+            <h2 class="quick__title">Quick Actions</h2>
+            <div class="quick__grid">
+              <button class="quick__item" type="button">
+                <span class="quick__icon" aria-hidden="true">＋</span>
+                <span class="quick__label">New Task</span>
+              </button>
+              <button class="quick__item" type="button">
+                <span class="quick__icon" aria-hidden="true">＋</span>
+                <span class="quick__label">New Project</span>
+              </button>
+              <button class="quick__item" type="button">
+                <span class="quick__icon" aria-hidden="true">⤓</span>
+                <span class="quick__label">Import</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Active Projects единый с Profile page (При нажатии на айтем, должны проваливаться в конкретный проект - js функционал)-->
+          <section class="active-projects card">
+            <div class="active-projects__header">
+              <h2 class="active-projects__title">Active Projects</h2>
+              <a
+                class="active-projects__link"
+                href="/src/pages/projects/index.html"
+                >View all</a
+              >
+            </div>
+
+            <ul class="active-projects__list">
+              <li class="active-projects__item">
+                <span class="active-projects__name">Mobile App Redesign</span>
+                <span class="active-projects__percent">68%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 68%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Backend API v3</span>
+                <span class="active-projects__percent">42%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 42%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Marketing Campaign Q4</span>
+                <span class="active-projects__percent">85%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 85%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Design System 2.0</span>
+                <span class="active-projects__percent">55%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 55%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Design System 2.0</span>
+                <span class="active-projects__percent">55%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 55%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Design System 2.0</span>
+                <span class="active-projects__percent">55%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 55%"
+                  ></span>
+                </span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Overlay + Modal: статично (скрытие/показ позже сделаем JS) -->
+        <article class="modal js-modal is-hidden" aria-hidden="true">
+          <div class="new-task-modal">
+            <!-- Header -->
+            <header class="new-task-modal__header">
+              <input
+                class="new-task-modal__title-input"
+                value="Task title"
+                aria-label="Task title"
+              />
+              <button
+                class="btn__close js-close"
+                type="button"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </header>
+
+            <main class="new-task-modal__main">
+              <!-- LEFT COLUMN -->
+              <div class="new-task-modal__col-left">
+                <!-- Description -->
+                <form>
+                  <label class="new-task-modal__title" for="description"
+                    >Description</label
                   >
-                    Add
-                  </button>
-                </div>
+                  <textarea
+                    class="new-task-modal__textarea"
+                    rows="4"
+                    placeholder="Add a detailed description..."
+                    aria-label="Description"
+                    id="description"
+                  ></textarea>
+                </form>
 
-                <ul class="new-task-modal__checklist">
-                  <!-- Плейсхолдеры пунктов -->
-                  <li class="new-task-modal__checkitem" data-id="c1">
-                    <input class="new-task-modal__checkbox" type="checkbox" />
-                    <span class="new-task-modal__checkitem-text"
-                      >First subtask</span
-                    >
-                  </li>
-                  <li class="new-task-modal__checkitem" data-id="c2">
-                    <input class="new-task-modal__checkbox" type="checkbox" />
-                    <span class="new-task-modal__checkitem-text"
-                      >Second subtask</span
-                    >
-                  </li>
-                </ul>
-              </form>
+                <!-- Checklist -->
+                <form>
+                  <div class="new-task-modal__section-row">
+                    <label class="new-task-modal__title">
+                      <span class="new-task-modal__icon" aria-hidden="true"
+                        >☑</span
+                      >
+                      Checklist
+                    </label>
+                  </div>
 
-              <!-- Attachments -->
-              <form>
+                  <div class="new-task-modal__checklist-form">
+                    <input
+                      class="form__input form__input_white"
+                      type="text"
+                      placeholder="Add checklist item..."
+                      aria-label="Checklist item"
+                    />
+                    <button
+                      class="btn btn__primary js-add-checkitem"
+                      type="button"
+                    >
+                      Add
+                    </button>
+                  </div>
+
+                  <ul class="new-task-modal__checklist">
+                    <!-- Плейсхолдеры пунктов -->
+                    <li class="new-task-modal__checkitem" data-id="c1">
+                      <input class="new-task-modal__checkbox" type="checkbox" />
+                      <span class="new-task-modal__checkitem-text"
+                        >First subtask</span
+                      >
+                    </li>
+                    <li class="new-task-modal__checkitem" data-id="c2">
+                      <input class="new-task-modal__checkbox" type="checkbox" />
+                      <span class="new-task-modal__checkitem-text"
+                        >Second subtask</span
+                      >
+                    </li>
+                  </ul>
+                </form>
+
+                <!-- Attachments -->
+                <form>
+                  <label class="new-task-modal__title">
+                    <span class="new-task-modal__label-icon" aria-hidden="true"
+                      >📎</span
+                    >
+                    Attachments
+                  </label>
+
+                  <div
+                    class="new-task-modal__dropzone"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Drop files here or click to upload"
+                  >
+                    <div
+                      class="new-task-modal__dropzone-icon"
+                      aria-hidden="true"
+                    >
+                      📎
+                    </div>
+                    <p class="new-task-modal__dropzone-des">
+                      Drop files here or click to upload
+                    </p>
+                    <button class="btn btn__ghost js-upload" type="button">
+                      Choose Files
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- RIGHT COLUMN -->
+              <div class="new-task-modal__col-right">
+                <!-- Status -->
+                <form>
+                  <label class="new-task-modal__title" for="status"
+                    >Status</label
+                  >
+                  <div class="form__select-wrap">
+                    <select
+                      class="new-task-modal__select"
+                      name="status"
+                      id="status"
+                    >
+                      <option>To Do</option>
+                      <option>In Progress</option>
+                      <option>Review</option>
+                      <option>Done</option>
+                    </select>
+                    <svg
+                      class="form__select-caret"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </div>
+                </form>
+
+                <!-- Priority -->
+                <form>
+                  <label class="new-task-modal__title" for="priority"
+                    >Priority</label
+                  >
+                  <div class="form__select-wrap">
+                    <select
+                      class="new-task-modal__select"
+                      name="priority"
+                      id="priority"
+                    >
+                      <option>Low</option>
+                      <option selected>Medium</option>
+                      <option>High</option>
+                    </select>
+                    <svg
+                      class="form__select-caret"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </div>
+                </form>
+
+                <!-- Due Date -->
+                <form>
+                  <label class="new-task-modal__title" for="due"
+                    >Due Date</label
+                  >
+                  <div class="new-task-modal__date-field">
+                    <input
+                      class="form__input form__input_white"
+                      id="due"
+                      type="text"
+                      placeholder="ДД.ММ.ГГГГ"
+                    />
+                    <span class="new-task-modal__addon" aria-hidden="true"
+                      >📅</span
+                    >
+                  </div>
+                </form>
+
+                <!-- Tags -->
+                <form>
+                  <label class="new-task-modal__title" for="tags">Tags</label>
+                  <div class="new-task-modal__tags">
+                    <span class="new-task-modal__tag">design</span>
+                    <span class="new-task-modal__tag">develop</span>
+                    <button class="btn btn__add js-add-tag" type="button">
+                      +
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Assignees -->
+                <form>
+                  <label class="new-task-modal__title" for="assignees"
+                    >Assignees</label
+                  >
+                  <div class="new-task-modal__assignees">
+                    <span
+                      class="new-task-modal__avatar"
+                      title="AR"
+                      aria-label="AR"
+                      >AR</span
+                    >
+                    <span
+                      class="new-task-modal__avatar"
+                      title="SC"
+                      aria-label="SC"
+                      >SC</span
+                    >
+                    <span
+                      class="new-task-modal__avatar"
+                      title="JK"
+                      aria-label="JK"
+                      >JK</span
+                    >
+                    <button class="btn btn__add js-add-assignee" type="button">
+                      +
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Comments -->
+              <form class="new-task-modal__comments">
                 <label class="new-task-modal__title">
                   <span class="new-task-modal__label-icon" aria-hidden="true"
-                    >📎</span
+                    >💬</span
                   >
-                  Attachments
+                  Comments
                 </label>
-
-                <div
-                  class="new-task-modal__dropzone"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Drop files here or click to upload"
-                >
-                  <div class="new-task-modal__dropzone-icon" aria-hidden="true">
-                    📎
-                  </div>
-                  <p class="new-task-modal__dropzone-des">
-                    Drop files here or click to upload
-                  </p>
-                  <button class="btn btn__ghost js-upload" type="button">
-                    Choose Files
-                  </button>
-                </div>
-              </form>
-            </div>
-
-            <!-- RIGHT COLUMN -->
-            <div class="new-task-modal__col-right">
-              <!-- Status -->
-              <form>
-                <label class="new-task-modal__title" for="status">Status</label>
-                <select
-                  class="new-task-modal__select"
-                  name="status"
-                  id="status"
-                >
-                  <option>To Do</option>
-                  <option>In Progress</option>
-                  <option>Review</option>
-                  <option>Done</option>
-                </select>
-              </form>
-
-              <!-- Priority -->
-              <form>
-                <label class="new-task-modal__title" for="priority"
-                  >Priority</label
-                >
-                <select
-                  class="new-task-modal__select"
-                  name="priority"
-                  id="priority"
-                >
-                  <option>Low</option>
-                  <option selected>Medium</option>
-                  <option>High</option>
-                </select>
-              </form>
-
-              <!-- Due Date -->
-              <form>
-                <label class="new-task-modal__title" for="due">Due Date</label>
-                <div class="new-task-modal__date-field">
+                <div class="new-task-modal__comment-form">
                   <input
                     class="form__input form__input_white"
-                    id="due"
                     type="text"
-                    placeholder="ДД.ММ.ГГГГ"
+                    placeholder="Add a comment..."
+                    aria-label="Comment text"
                   />
-                  <span class="new-task-modal__addon" aria-hidden="true"
-                    >📅</span
-                  >
-                </div>
-              </form>
-
-              <!-- Tags -->
-              <form>
-                <label class="new-task-modal__title" for="tags">Tags</label>
-                <div class="new-task-modal__tags">
-                  <span class="new-task-modal__tag">design</span>
-                  <span class="new-task-modal__tag">develop</span>
-                  <button class="btn btn__add js-add-tag" type="button">
-                    +
+                  <button class="btn btn__primary" type="button">
+                    Comment
                   </button>
                 </div>
               </form>
 
-              <!-- Assignees -->
-              <form class="task-modal__field">
-                <label class="new-task-modal__title" for="assignees"
-                  >Assignees</label
-                >
-                <div class="new-task-modal__assignees">
-                  <span
-                    class="new-task-modal__avatar"
-                    title="AR"
-                    aria-label="AR"
-                    >AR</span
-                  >
-                  <span
-                    class="new-task-modal__avatar"
-                    title="SC"
-                    aria-label="SC"
-                    >SC</span
-                  >
-                  <span
-                    class="new-task-modal__avatar"
-                    title="JK"
-                    aria-label="JK"
-                    >JK</span
-                  >
-                  <button class="btn btn__add js-add-assignee" type="button">
-                    +
-                  </button>
-                </div>
+              <!-- Create -->
+              <form class="new-task-modal__create">
+                <button class="btn btn__primary btn__lg" type="button">
+                  Create Task
+                </button>
               </form>
-            </div>
+            </main>
+          </div>
+        </article>
+      </main>
 
-            <!-- Comments -->
-            <form class="new-task-modal__comments">
-              <label class="new-task-modal__title">
-                <span class="new-task-modal__label-icon" aria-hidden="true"
-                  >💬</span
-                >
-                Comments
-              </label>
-              <div class="new-task-modal__comment-form">
-                <input
-                  class="form__input form__input_white"
-                  type="text"
-                  placeholder="Add a comment..."
-                  aria-label="Comment text"
-                />
-                <button class="btn btn__primary" type="button">Comment</button>
-              </div>
-            </form>
+      <!-- skeleton -->
+      <div class="skeleton is-hidden">
+        <div class="skeleton__line"></div>
+        <div class="skeleton__line"></div>
+      </div>
 
-            <!-- Create -->
-            <form class="new-task-modal__create">
-              <button class="btn btn__primary btn__lg" type="button">
-                Create Task
-              </button>
-            </form>
-          </main>
-        </div>
-      </article>
-    </main>
+      <!-- empty -->
+      <div class="empty is-hidden">
+        <div class="empty__icon">🗒️</div>
+        <div class="empty__title">No items yet</div>
+        <button class="btn">Create</button>
+      </div>
 
-    <!-- skeleton -->
-    <div class="skeleton is-hidden">
-      <div class="skeleton__line"></div>
-      <div class="skeleton__line"></div>
-    </div>
+      <!-- error -->
+      <div class="error is-hidden">
+        <div class="error__title">Something went wrong</div>
+        <button class="btn">Retry</button>
+      </div>
 
-    <!-- empty -->
-    <div class="empty is-hidden">
-      <div class="empty__icon">🗒️</div>
-      <div class="empty__title">No items yet</div>
-      <button class="btn">Create</button>
-    </div>
-
-    <!-- error -->
-    <div class="error is-hidden">
-      <div class="error__title">Something went wrong</div>
-      <button class="btn">Retry</button>
-    </div>
-
-    <!-- Тосты (скрыты) -->
-    <div class="toast is-hidden">
-      <div class="toast__item">Saved successfully</div>
+      <!-- Тосты (скрыты) -->
+      <div class="toast is-hidden">
+        <div class="toast__item">Saved successfully</div>
+      </div>
     </div>
   </body>
 </html>

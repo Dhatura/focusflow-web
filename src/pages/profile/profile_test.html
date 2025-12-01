@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FocusFlow — Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./profile_settings_test.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header" role="banner">
+        <div class="header__logo">FocusFlow</div>
+        <form class="header__search" role="search" aria-label="Global search">
+          <input
+            class="header__search-input"
+            type="search"
+            placeholder="Search tasks, projects…"
+          />
+        </form>
+        <div class="header__actions">
+          <button class="header__icon-btn" type="button" aria-label="Theme">
+            🌓
+          </button>
+          <div
+            class="header__icon-btn"
+            aria-label="Notifications"
+            role="button"
+            tabindex="0"
+          >
+            🔔<span class="header__badge">3</span>
+          </div>
+          <div class="header__user" aria-label="You">YO</div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" role="navigation" aria-label="Main">
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="/dashboard.html">Dashboard</a>
+          <a class="sidebar__link" href="/projects.html">Projects</a>
+          <a class="sidebar__link" href="/habits.html">Habits</a>
+          <a class="sidebar__link" href="/profile.html">Profile</a>
+          <a
+            class="sidebar__link sidebar__link--active"
+            href="/settings.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main" id="main-content">
+        <div class="container settings">
+          <header class="settings__header">
+            <h1 class="settings__title">Settings</h1>
+            <p class="settings__subtitle">
+              Manage your account and preferences
+            </p>
+          </header>
+
+          <!-- Tabs (anchor links; default link points to #profile) -->
+          <nav class="settings-tabs" aria-label="Settings tabs">
+            <a class="settings-tabs__link" href="#profile">Profile</a>
+            <a class="settings-tabs__link" href="#notifications"
+              >Notifications</a
+            >
+            <a class="settings-tabs__link" href="#appearance">Appearance</a>
+            <a class="settings-tabs__link" href="#pomodoro">Pomodoro</a>
+            <a class="settings-tabs__link" href="#advanced">Advanced</a>
+          </nav>
+
+          <!-- PROFILE PANEL -->
+          <section
+            id="profile"
+            class="settings-panel"
+            aria-labelledby="panel-profile-title"
+          >
+            <article class="settings-card card">
+              <h2 id="panel-profile-title">Profile Information</h2>
+
+              <div class="profile-edit__row">
+                <div class="avatar" aria-hidden="true">YO</div>
+                <div class="actions-row">
+                  <button class="button button--sm">Upload New</button>
+                  <button class="button button--sm button--muted">
+                    Remove
+                  </button>
+                </div>
+              </div>
+
+              <div class="form">
+                <div class="form-field">
+                  <label class="form-field__label" for="name">Full Name</label>
+                  <input
+                    class="form-field__control"
+                    id="name"
+                    placeholder="You"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="email">Email</label>
+                  <input
+                    class="form-field__control"
+                    id="email"
+                    type="email"
+                    placeholder="you@focusflow.app"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="role">Role</label>
+                  <input
+                    class="form-field__control"
+                    id="role"
+                    placeholder="Product Designer"
+                  />
+                </div>
+              </div>
+            </article>
+
+            <article class="settings-card card">
+              <h2>Change Password</h2>
+              <div class="form">
+                <div class="form-field">
+                  <label class="form-field__label" for="curpass"
+                    >Current Password</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="curpass"
+                    type="password"
+                    placeholder="••••••••"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="newpass"
+                    >New Password</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="newpass"
+                    type="password"
+                    placeholder="••••••••"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="confirmpass"
+                    >Confirm New Password</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="confirmpass"
+                    type="password"
+                    placeholder="••••••••"
+                  />
+                </div>
+                <div>
+                  <button class="button button--sm button--primary">
+                    Update Password
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <div class="settings-actions">
+              <button class="button button--muted">Cancel</button>
+              <button class="button button--primary">Save Changes</button>
+            </div>
+          </section>
+
+          <!-- NOTIFICATIONS PANEL -->
+          <section
+            id="notifications"
+            class="settings-panel"
+            aria-labelledby="panel-notifications-title"
+          >
+            <article class="settings-card card">
+              <h2 id="panel-notifications-title">Notification Preferences</h2>
+              <div class="group">
+                <div class="group__row">
+                  <div>
+                    <div>Email Notifications</div>
+                    <div class="group__sub">
+                      Receive notifications via email
+                    </div>
+                  </div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+
+                <div class="group__row">
+                  <div>
+                    <div>In-App Notifications</div>
+                    <div class="group__sub">Show notifications in the app</div>
+                  </div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+
+                <div class="group__row">
+                  <div>
+                    <div>Notification Frequency</div>
+                  </div>
+                  <div class="select-wrap" style="min-width: 220px">
+                    <select class="select" aria-label="Notification frequency">
+                      <option>Instant</option>
+                      <option>Hourly</option>
+                      <option>Daily</option>
+                      <option>Weekly</option>
+                    </select>
+                    <span class="select-wrap__caret">▾</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="settings-card card">
+              <h2>Notification Types</h2>
+              <div class="group">
+                <div class="group__row">
+                  <div>Comments and mentions</div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+                <div class="group__row">
+                  <div>Task assignments</div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+                <div class="group__row">
+                  <div>Upcoming deadlines</div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+                <div class="group__row">
+                  <div>Achievement unlocks</div>
+                  <div
+                    class="toggle toggle--on"
+                    role="switch"
+                    aria-checked="true"
+                  >
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+                <div class="group__row">
+                  <div>Project invites</div>
+                  <div class="toggle" role="switch" aria-checked="false">
+                    <span class="toggle__dot"></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="settings-actions">
+              <button class="button button--muted">Cancel</button>
+              <button class="button button--primary">Save Changes</button>
+            </div>
+          </section>
+
+          <!-- APPEARANCE PANEL -->
+          <section
+            id="appearance"
+            class="settings-panel"
+            aria-labelledby="panel-appearance-title"
+          >
+            <article class="settings-card card">
+              <h2 id="panel-appearance-title">Appearance</h2>
+              <div class="theme">
+                <div
+                  class="theme-option theme-option--active"
+                  data-theme="light"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Light theme"
+                >
+                  <div
+                    class="card"
+                    style="height: 60px; border-radius: 12px"
+                  ></div>
+                  <div class="theme-option__label">Light</div>
+                </div>
+                <div
+                  class="theme-option"
+                  data-theme="dark"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Dark theme"
+                >
+                  <div
+                    class="card"
+                    style="
+                      height: 60px;
+                      border-radius: 12px;
+                      background: #0f1115;
+                      border-color: #0f1115;
+                    "
+                  ></div>
+                  <div class="theme-option__label">Dark</div>
+                </div>
+                <div
+                  class="theme-option theme-option--disabled"
+                  aria-disabled="true"
+                >
+                  <div
+                    class="card"
+                    style="
+                      height: 60px;
+                      border-radius: 12px;
+                      background: linear-gradient(90deg, #d1d5db, #9ca3af);
+                    "
+                  ></div>
+                  <div class="theme-option__label">Auto</div>
+                  <span
+                    class="badge badge--soon"
+                    style="position: absolute; right: 10px; top: 10px"
+                    >Coming Soon</span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <div class="settings-actions">
+              <button class="button button--muted">Cancel</button>
+              <button class="button button--primary">Save Changes</button>
+            </div>
+          </section>
+
+          <!-- POMODORO PANEL -->
+          <section
+            id="pomodoro"
+            class="settings-panel"
+            aria-labelledby="panel-pomodoro-title"
+          >
+            <article class="settings-card card">
+              <h2 id="panel-pomodoro-title">Pomodoro Timer Settings</h2>
+              <div class="form">
+                <div class="form-field">
+                  <label class="form-field__label" for="work"
+                    >Work Duration (minutes)</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="work"
+                    type="number"
+                    value="25"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="short"
+                    >Short Break (minutes)</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="short"
+                    type="number"
+                    value="5"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="long"
+                    >Long Break (minutes)</label
+                  >
+                  <input
+                    class="form-field__control"
+                    id="long"
+                    type="number"
+                    value="15"
+                  />
+                </div>
+                <p class="note">Default settings: 25/5/15 (Work/Short/Long)</p>
+              </div>
+            </article>
+
+            <div class="settings-actions">
+              <button class="button button--muted">Cancel</button>
+              <button class="button button--primary">Save Changes</button>
+            </div>
+          </section>
+
+          <!-- ADVANCED PANEL -->
+          <section
+            id="advanced"
+            class="settings-panel"
+            aria-labelledby="panel-advanced-title"
+          >
+            <article class="settings-card card">
+              <h2 id="panel-advanced-title">Localization</h2>
+              <div class="form">
+                <div class="form-field">
+                  <label class="form-field__label" for="lang">Language</label>
+                  <div class="select-wrap">
+                    <select class="select" id="lang">
+                      <option>English</option>
+                      <option>Русский</option>
+                    </select>
+                    <span class="select-wrap__caret">▾</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="tz">Timezone</label>
+                  <div class="select-wrap">
+                    <select class="select" id="tz">
+                      <option>UTC</option>
+                      <option>Europe/Berlin</option>
+                    </select>
+                    <span class="select-wrap__caret">▾</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="datefmt"
+                    >Date Format</label
+                  >
+                  <div class="select-wrap">
+                    <select class="select" id="datefmt">
+                      <option>MM/DD/YYYY</option>
+                      <option>DD.MM.YYYY</option>
+                    </select>
+                    <span class="select-wrap__caret">▾</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="settings-card card">
+              <h2>Data Management</h2>
+              <div class="form">
+                <div class="form-field">
+                  <div class="form-field__label">Export Data</div>
+                  <p class="form-field__hint">
+                    Download all your tasks and projects
+                  </p>
+                  <button class="button button--sm">⬇ Export as JSON</button>
+                </div>
+                <div class="form-field">
+                  <div class="form-field__label">Import Data</div>
+                  <p class="form-field__hint">Import tasks from CSV or JSON</p>
+                  <button class="button button--sm">⬆ Import Data</button>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="danger card"
+              role="region"
+              aria-labelledby="danger-title"
+            >
+              <h2 class="danger__title" id="danger-title">Danger Zone</h2>
+              <p>
+                Irreversible actions that will permanently affect your account
+              </p>
+              <button class="button danger__btn">🗑 Delete Account</button>
+            </article>
+
+            <div class="settings-actions">
+              <button class="button button--muted">Cancel</button>
+              <button class="button button--primary">Save Changes</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- ВАЖНО: открывай страницу с хэшем: /settings.html#profile -->
+  </body>
+</html>

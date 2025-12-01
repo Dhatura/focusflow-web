@@ -1,0 +1,23 @@
+.activity__title {
+  margin-bottom: 6px;
+}
+.activity__chart {
+  height: 180px;
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(124, 92, 255, 0.18), rgba(124, 92, 255, 0)),
+    linear-gradient(90deg, #f0f1f7 10px, transparent 10px) repeat-x;
+  background-size:
+    100% 100%,
+    40px 100%;
+  display: grid;
+  align-items: end;
+  gap: 12px;
+  padding: 0 14px 12px;
+}
+.activity__bar {
+  height: var(--h, 40%);
+  width: 32px;
+  background: linear-gradient(180deg, #8b5cf6, #6366f1);
+  border-radius: 10px;
+}

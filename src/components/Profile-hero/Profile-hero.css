@@ -1,0 +1,41 @@
+.profile-hero {
+  padding: var(--space-5);
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: #fff;
+  border: 0;
+  margin-bottom: var(--space-8);
+}
+.profile-hero__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.profile-hero__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.profile-hero__avatar {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+}
+.profile-hero__heading {
+  margin: 0;
+}
+.profile-hero__stats {
+  display: flex;
+  gap: var(--space-5);
+  margin: 0;
+  font-size: var(--fs-sm);
+  opacity: 0.95;
+}
+
+.profile-hero__link {
+  color: var(--color-text);
+}

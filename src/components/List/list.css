@@ -1,4 +1,4 @@
-.list {
+/* .list {
   display: grid;
   gap: var(--space-3);
   margin: 0;
@@ -6,10 +6,10 @@
   list-style: none;
 }
 /* переписать в projects*/
-.grid {
+/* .grid {
   display: grid;
   gap: var(--space-4);
 }
 .grid--projects {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
+} */

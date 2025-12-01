@@ -1,7 +1,7 @@
-.dashboard {
+/* .dashboard {
   grid-row: 2 / -1;
   padding: var(--space-6);
-}
+} */
 .dashboard__title {
   margin: 0 0 var(--space-1);
   font-size: 28px;
@@ -12,10 +12,7 @@
 }
 .dashboard__grid {
   display: grid;
-  /* grid-template-columns: 1fr 360px;
-  grid-template-rows: 1fr 1fr; */
   grid-template-columns: 1fr 360px;
-  grid-template-rows: 4, 1fr;
   grid-template-areas:
     "tasks            pomodoro"
     "tasks            active-projects"

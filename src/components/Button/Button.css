@@ -48,6 +48,20 @@
   background: var(--color-surface);
 }
 
+.btn__danger {
+  width: 100%;
+  border: none;
+  background: var(--color-danger);
+  border-radius: var(--radius-lg);
+  color: var(--color-surface);
+  font-weight: 600;
+}
+
+.btn__accent-3 {
+  background: var(--color-accent-3);
+  border: none;
+}
+
 .btn__add {
   background: var(--color-accent-weak);
   border-radius: 50%;

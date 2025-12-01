@@ -1,0 +1,24 @@
+.settings-profile__avatar {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-profile__avatar-picture {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-surface);
+}
+
+.settings-profile__avatar-row {
+  display: flex;
+  gap: var(--space-4);
+}

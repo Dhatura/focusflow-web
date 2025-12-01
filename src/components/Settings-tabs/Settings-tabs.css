@@ -1,0 +1,6 @@
+.settings-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}

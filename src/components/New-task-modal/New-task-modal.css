@@ -110,9 +110,12 @@
 
 /* Status */
 .new-task-modal__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   display: block;
   width: 100%;
-  padding: 8px 0;
+  padding: 8px 8px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background: #fff;

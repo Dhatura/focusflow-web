@@ -32,7 +32,16 @@
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 8px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px;
 }
+.active-projects__item:hover {
+  cursor: pointer;
+  background: var(--color-elev);
+}
+
 .active-projects__name {
   font-weight: 600;
 }
@@ -56,4 +65,9 @@
     var(--color-accent),
     var(--color-accent-2)
   );
+}
+
+/* for Profile page */
+.active-projects_profile {
+  display: grid;
 }

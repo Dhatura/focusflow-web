@@ -1,0 +1,13 @@
+.settings-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* панели вкладок — будут переключаться :target */
+.settings-panel {
+  display: none;
+}
+:target.settings-panel {
+  display: flex;
+}

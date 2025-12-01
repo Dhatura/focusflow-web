@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>FocusFlow</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
+
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
+
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
+
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
+        </div>
+
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif__item" data-id="n1">
+              <div class="notif__item-title">You were mentioned</div>
+              <div class="notif__item-meta">2m ago</div>
+            </li>
+            <li class="notif__item" data-id="n2">
+              <div class="notif__item-title">New project invite</div>
+              <div class="notif__item-meta">10m ago</div>
+            </li>
+          </ul>
+          <div class="notif__actions">
+            <button class="btn btn__sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a class="sidebar__link" href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a
+            class="sidebar__link sidebar__link_active"
+            href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <!-- ВАЖНО: пока что открывается с хэшем: /index.html#profile -->
+          <a class="sidebar__link" href="/src/pages/settings/index.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="profile main main__profile">
+        <!-- Profile hero -->
+        <section class="profile-hero card">
+          <div class="profile-hero__container">
+            <div class="profile-hero__user">
+              <div class="profile-hero__avatar" aria-hidden="true">YO</div>
+              <div>
+                <h1 class="profile-hero__heading">You</h1>
+                <p class="profile-hero__meta">Product Designer</p>
+                <p class="profile-hero__stats" aria-label="Stats">
+                  <span>🏆 2890 XP</span>
+                  <span>🗂 1 Tasks</span>
+                  <span>🔥 14 Day Streak</span>
+                </p>
+              </div>
+            </div>
+            <button class="btn btn__accent-3">
+              <a
+                class="profile-hero__link"
+                href="/src/pages/settings/index.html#profile"
+                >Edit Profile</a
+              >
+            </button>
+          </div>
+        </section>
+
+        <div class="profile__grid">
+          <!-- View tabs (static, без переключения контента (Achievements, Activity пока не существует)) -->
+          <nav class="profile-tabs" aria-label="Profile view tabs">
+            <button class="btn btn__ghost" type="button">Overview</button>
+            <button class="btn" type="button" disabled>Achievements</button>
+            <button class="btn" type="button" disabled>Activity</button>
+          </nav>
+
+          <!-- KPI cards -->
+          <section class="kpi" aria-label="Key metrics">
+            <article class="kpi__item card">
+              <div class="kpi__label">
+                Total XP <span title="Trophy" aria-hidden="true">🏅</span>
+              </div>
+              <div class="kpi__value">2890</div>
+              <div class="kpi__note">+250 this week</div>
+            </article>
+            <article class="kpi__item card">
+              <div class="kpi__label">
+                Current Streak <span aria-hidden="true">🔥</span>
+              </div>
+              <div class="kpi__value">14</div>
+              <div class="kpi__note">days</div>
+            </article>
+            <article class="kpi__item card">
+              <div class="kpi__label">
+                Completed <span aria-hidden="true">✅</span>
+              </div>
+              <div class="kpi__value">1</div>
+              <div class="kpi__note">tasks</div>
+            </article>
+          </section>
+
+          <!-- Weekly Activity (chart placeholder) -->
+          <!-- сделать финкционал диаграммы через js -->
+          <section class="activity card" aria-labelledby="activity-title">
+            <h2 class="activity__title" id="activity-title">Weekly Activity</h2>
+            <div
+              class="activity__chart"
+              role="img"
+              aria-label="Weekly activity bar chart"
+            >
+              <div class="activity__bar" style="--h: 55%"></div>
+              <div class="activity__bar" style="--h: 70%"></div>
+              <div class="activity__bar" style="--h: 85%"></div>
+              <div class="activity__bar" style="--h: 60%"></div>
+              <div class="activity__bar" style="--h: 95%"></div>
+              <div class="activity__bar" style="--h: 40%"></div>
+              <div class="activity__bar" style="--h: 50%"></div>
+            </div>
+          </section>
+
+          <!-- Active Projects единый с Dashboard. Добавить теги. При нажатии на айтем, должны проваливаться в конкретный проект - js функционал. View all переносит на страницу Projects. Изменить стили -->
+          <section class="active-projects_profile card">
+            <div class="active-projects__header">
+              <h2 class="active-projects__title">Active Projects</h2>
+              <a
+                class="active-projects__link"
+                href="/src/pages/projects/index.html"
+                >View all</a
+              >
+            </div>
+            <!-- Сделать кликабельные кнопки, ведущие на проект, добавить теги -->
+            <ul class="active-projects__list">
+              <li class="active-projects__item">
+                <span class="active-projects__name">Mobile App Redesign</span>
+                <span class="active-projects__percent">68%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 68%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Backend API v3</span>
+                <span class="active-projects__percent">42%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 42%"
+                  ></span>
+                </span>
+              </li>
+              <li class="active-projects__item">
+                <span class="active-projects__name">Marketing Campaign Q4</span>
+                <span class="active-projects__percent">85%</span>
+                <span class="active-projects__bar">
+                  <span
+                    class="active-projects__bar-fill"
+                    style="--w: 85%"
+                  ></span>
+                </span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

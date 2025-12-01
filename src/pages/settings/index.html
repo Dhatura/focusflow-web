@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>FocusFlow</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
+
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
+
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
+
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
+        </div>
+
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif__item" data-id="n1">
+              <div class="notif__item-title">You were mentioned</div>
+              <div class="notif__item-meta">2m ago</div>
+            </li>
+            <li class="notif__item" data-id="n2">
+              <div class="notif__item-title">New project invite</div>
+              <div class="notif__item-meta">10m ago</div>
+            </li>
+          </ul>
+          <div class="notif__actions">
+            <button class="btn btn__sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a class="sidebar__link" href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a class="sidebar__link" href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <!-- ВАЖНО: пока что открывается с хэшем: /index.html#profile -->
+          <a
+            class="sidebar__link sidebar__link_active"
+            href="/src/pages/settings/index.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="settings main main__settings" id="main-content">
+        <section class="settings__intro">
+          <h1 class="settings__title">Settings</h1>
+          <p class="settings__subtitle">Manage your account and preferences</p>
+        </section>
+
+        <!-- Tabs (anchor links; default link points to #profile) -->
+        <nav class="settings-tabs" aria-label="Settings tabs">
+          <a class="btn btn__ghost" href="#profile">Profile</a>
+          <a class="btn btn__ghost" href="#notifications">Notifications</a>
+          <a class="btn btn__ghost" href="#appearance">Appearance</a>
+          <a class="btn btn__ghost" href="#pomodoro">Pomodoro</a>
+          <a class="btn btn__ghost" href="#advanced">Advanced</a>
+        </nav>
+
+        <!-- PROFILE PANEL -->
+        <section id="profile" class="settings-profile settings-panel">
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Profile Information</h2>
+
+            <!-- change avatar -->
+            <div class="settings-profile__avatar">
+              <div class="settings-profile__avatar-picture" aria-hidden="true">
+                YO
+              </div>
+              <div>
+                <p class="settings-profile__avatar-description">
+                  Profile Picture
+                </p>
+                <div class="settings-profile__avatar-row">
+                  <button class="btn btn__sm btn__accent-3">Upload New</button>
+                  <button class="btn btn__sm button--muted">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- change name, main -->
+            <form class="form js-form">
+              <div class="form__field">
+                <label class="form__label" for="name">Full Name</label>
+                <input class="form__input" id="name" placeholder="You" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="email">Email</label>
+                <input
+                  class="form__input"
+                  id="email"
+                  type="email"
+                  placeholder="you@focusflow.app"
+                />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="role">Role</label>
+                <input
+                  class="form__input"
+                  id="role"
+                  placeholder="Product Designer"
+                />
+              </div>
+            </form>
+          </article>
+
+          <!-- change password -->
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Change Password</h2>
+            <form class="form">
+              <div class="form__field">
+                <label class="form__label" for="curpass"
+                  >Current Password</label
+                >
+                <input
+                  class="form__input"
+                  id="curpass"
+                  type="password"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="newpass">New Password</label>
+                <input
+                  class="form__input"
+                  id="newpass"
+                  type="password"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="confirmpass"
+                  >Confirm New Password</label
+                >
+                <input
+                  class="form__input"
+                  id="confirmpass"
+                  type="password"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div>
+                <button class="btn btn__sm btn__primary" type="submit">
+                  Update Password
+                </button>
+              </div>
+            </form>
+          </article>
+        </section>
+
+        <!-- NOTIFICATIONS PANEL -->
+        <section
+          id="notifications"
+          class="settings-notifications settings-panel"
+        >
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Notification Preferences</h2>
+            <div class="settings-notifications__container">
+              <div class="settings-notifications__row">
+                <div>
+                  <div>Email Notifications</div>
+                  <div class="settings-notifications__sub">
+                    Receive notifications via email
+                  </div>
+                </div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+
+              <div class="settings-notifications__row">
+                <div>
+                  <div>In-App Notifications</div>
+                  <div class="settings-notifications__sub">
+                    Show notifications in the app
+                  </div>
+                </div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+
+              <div class="settings-notifications__row">
+                <div>Notification Frequency</div>
+                <div class="form__select-wrap">
+                  <select
+                    class="form__select"
+                    id="notif-frequency"
+                    aria-label="Notification frequency"
+                  >
+                    <option>Instant</option>
+                    <option>Hourly</option>
+                    <option>Daily</option>
+                    <option>Weekly</option>
+                  </select>
+                  <svg
+                    class="form__select-caret"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Notification Types</h2>
+            <div class="settings-notifications__container">
+              <div class="settings-notifications__row">
+                <div>Comments and mentions</div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+              <div class="settings-notifications__row">
+                <div>Task assignments</div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+              <div class="settings-notifications__row">
+                <div>Upcoming deadlines</div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+              <div class="settings-notifications__row">
+                <div>Achievement unlocks</div>
+                <div
+                  class="toggle toggle__on"
+                  role="switch"
+                  aria-checked="true"
+                >
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+              <div class="settings-notifications__row">
+                <div>Project invites</div>
+                <div class="toggle" role="switch" aria-checked="false">
+                  <span class="toggle__dot"></span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- APPEARANCE PANEL -->
+        <!-- в будущем здесь должны переключаться темы: светлая, темная, автоматическая (подстраивается под часы) и настраиваемая (индивидуальные пользовательские настройки) -->
+        <section id="appearance" class="settings-appearance settings-panel">
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Appearance</h2>
+            <div class="settings-appearance__theme">
+              <div
+                class="settings-appearance__theme-option settings-appearance__theme-option_active"
+                data-theme="light"
+                tabindex="0"
+                role="button"
+                aria-label="Light theme"
+              >
+                <div class="settings-appearance__color"></div>
+                <div class="settings-appearance__label">Light</div>
+              </div>
+              <div
+                class="settings-appearance__theme-option"
+                data-theme="dark"
+                tabindex="0"
+                role="button"
+                aria-label="Dark theme"
+              >
+                <div
+                  class="settings-appearance__color settings-appearance__color_dark"
+                ></div>
+                <div class="settings-appearance__label">Dark</div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- POMODORO PANEL -->
+        <section id="pomodoro" class="settings-pomodoro settings-panel">
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Pomodoro Timer Settings</h2>
+            <div class="form">
+              <div class="form__field">
+                <label class="form__label" for="work"
+                  >Work Duration (minutes)</label
+                >
+                <input class="form__input" id="work" type="number" value="25" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="short"
+                  >Short Break (minutes)</label
+                >
+                <input class="form__input" id="short" type="number" value="5" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="long"
+                  >Long Break (minutes)</label
+                >
+                <input class="form__input" id="long" type="number" value="15" />
+              </div>
+              <p class="settings-pomodoro__note">
+                Default settings: 25/5/15 (Work/Short/Long)
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <!-- ADVANCED PANEL -->
+        <section id="advanced" class="settings-advanced settings-panel">
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Localization</h2>
+            <div class="form">
+              <div class="form__field">
+                <label class="form__label" for="lang">Language</label>
+                <div class="form__select-wrap">
+                  <select class="form__select" id="lang">
+                    <option>English</option>
+                    <option>Русский</option>
+                  </select>
+                  <svg
+                    class="form__select-caret"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="tz">Timezone</label>
+                <div class="form__select-wrap">
+                  <select class="form__select" id="tz">
+                    <option>UTC</option>
+                    <option>Europe/Berlin</option>
+                  </select>
+                  <svg
+                    class="form__select-caret"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="datefmt">Date Format</label>
+                <div class="form__select-wrap">
+                  <select class="form__select" id="datefmt">
+                    <option>MM/DD/YYYY</option>
+                    <option>DD.MM.YYYY</option>
+                  </select>
+                  <svg
+                    class="form__select-caret"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="settings-card card">
+            <h2 class="settings__card-title">Data Management</h2>
+            <div class="form">
+              <div class="form__field border-bottom">
+                <div class="form__label">Export Data</div>
+                <p>Download all your tasks and projects</p>
+                <button class="btn">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-download h-4 w-4 mr-2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" x2="12" y1="15" y2="3"></line>
+                  </svg>
+
+                  Export as JSON
+                </button>
+              </div>
+              <div class="form__field">
+                <div class="form__label">Import Data</div>
+                <p>Import tasks from CSV or JSON</p>
+                <button class="btn">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-upload h-4 w-4 mr-2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" x2="12" y1="3" y2="15"></line>
+                  </svg>
+                  Import Data
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="settings__danger-card card">
+            <h2 class="settings__card-title">Danger Zone</h2>
+            <p>
+              Irreversible actions that will permanently affect your account
+            </p>
+            <button class="btn btn__danger">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-trash2 lucide-trash-2 h-4 w-4 mr-2"
+              >
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                <line x1="10" x2="10" y1="11" y2="17"></line>
+                <line x1="14" x2="14" y1="11" y2="17"></line>
+              </svg>
+              Delete Account
+            </button>
+          </article>
+        </section>
+
+        <!-- Единые кнопки для всех панелей settings page -->
+        <section class="settings__actions">
+          <button class="btn button__muted">Cancel</button>
+          <button class="btn btn__primary" type="submit">Save Changes</button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

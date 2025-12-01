@@ -16,3 +16,15 @@
   grid-row: 2 / 3;
   padding: var(--space-6);
 }
+
+.main__profile {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main__settings {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
