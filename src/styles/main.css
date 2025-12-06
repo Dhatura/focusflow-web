@@ -29,9 +29,24 @@
 @import url("../components/Pomodoro/Pomodoro.css");
 @import url("../components/Active-projects/Active-projects.css");
 
-/* Modals */
+/* Dashboard Modals */
 @import url("../components/Modal/Modal.css");
 @import url("../components/New-task-modal/New-task-modal.css");
+
+/* Projects page */
+@import url("../components/Projects/Projects.css");
+@import url("../components/Projects-toolbar/Projects-toolbar.css");
+@import url("../components/Projects-grid/Projects-grid.css");
+@import url("../components/Project-card/Project-card.css");
+
+/* Projects Modals */
+@import url("../components/New-project-modal/New-project-modal.css");
+
+/* Board page */
+@import url("../components/Board/Board.css");
+@import url("../components/Board-grid/Board-grid.css");
+@import url("../components/Board-card/Board-card.css");
+@import url("../components/Board-task-card/Board-task-card.css");
 
 /* Profile page */
 @import url("../components/Profile/Profile.css");

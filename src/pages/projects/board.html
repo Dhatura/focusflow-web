@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>FocusFlow</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
+
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
+
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
+
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
+        </div>
+
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif__item" data-id="n1">
+              <div class="notif__item-title">You were mentioned</div>
+              <div class="notif__item-meta">2m ago</div>
+            </li>
+            <li class="notif__item" data-id="n2">
+              <div class="notif__item-title">New project invite</div>
+              <div class="notif__item-meta">10m ago</div>
+            </li>
+          </ul>
+          <div class="notif__actions">
+            <button class="btn btn__sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a class="sidebar__link" href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a class="sidebar__link" href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <!-- ВАЖНО: пока что открывается с хэшем: /index.html#profile -->
+          <a class="sidebar__link" href="/src/pages/settings/index.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="board">
+        <!-- Page header -->
+        <section class="board__header">
+          <div class="board__intro">
+            <button class="btn__round">
+              <a
+                class="board__back"
+                href="../../pages/projects/index.html"
+                aria-label="Back"
+                >←</a
+              >
+            </button>
+            <div>
+              <!-- Заголовок и текст для примера, в будущем должен подгружаться из конкретного проекта через js -->
+              <h1 class="board__title">Mobile App Redesign</h1>
+              <p class="board__subtitle">
+                Complete overhaul of the mobile experience with focus on
+                accessibility and performance
+              </p>
+            </div>
+          </div>
+          <!-- Toolbar: search + filters -->
+          <div class="board__toolbar">
+            <div class="board__toolbar-search">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="board__toolbar-search-icon"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <!-- JS later: debounce search; hook below -->
+              <input
+                class="board__toolbar-search-input js-doard-search"
+                type="search"
+                name="Tasks-search"
+                placeholder="Search tasks…"
+              />
+            </div>
+
+            <!-- JS later: fill from API; value in data-attr -->
+            <button
+              class="board__toolbar-filter btn js-filter"
+              type="button"
+              data-filter="all"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="board__toolbar-filter-icon"
+              >
+                <path
+                  d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"
+                ></path>
+              </svg>
+              <select
+                class="board__toolbar-select"
+                id="tasks-filter"
+                aria-label="Tasks filter"
+              >
+                <option>All</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="board__toolbar-caret-icon"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+
+            <!-- в будущем должно открываться модальное окно создания задачи через js -->
+            <button class="btn btn__primary board__create-btn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="board__add-icon"
+              >
+                <path d="M5 12h14"></path>
+                <path d="M12 5v14"></path>
+              </svg>
+              New Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="board-grid" aria-label="Board cards">
+          <!-- Наполнение каждой карточки должно динамически подгружаться через JS -->
+          <!-- Backlog -->
+          <article class="board-card" data-id="b1" data-card="backlog">
+            <header class="board-card__header">
+              <div class="board-card__header-row">
+                <span class="board-card__dot"></span>
+                <h2 class="board-card__title">Backlog</h2>
+              </div>
+              <span class="board-card__count">1</span>
+            </header>
+
+            <ul class="board-card__list">
+              <li class="board-task-card js-task-open" data-id="t1">
+                <h3 class="board-task-card__title">Performance benchmarking</h3>
+                <ul class="board-task-card__tags">
+                  <li class="board-task-card__tag">development</li>
+                  <li class="board-task-card__tag">performance</li>
+                </ul>
+                <div class="board-task-card__meta">
+                  <time class="board-task-card__date" datetime="2025-10-23"
+                    >23.10.2025</time
+                  >
+                  <span
+                    class="board-task-card__priority board-task-card__priority_medium"
+                    >medium</span
+                  >
+                </div>
+                <div class="board-task-card__assignees">
+                  <span class="board-task-card__avatar">RS</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- To Do -->
+          <article class="board-card" data-id="b1" data-card="backlog">
+            <header class="board-card__header">
+              <div class="board-card__header-row">
+                <span class="board-card__dot"></span>
+                <h2 class="board-card__title">To Do</h2>
+              </div>
+              <span class="board-card__count">2</span>
+            </header>
+
+            <ul class="board-card__list">
+              <li class="board-task-card js-task-open" data-id="t1">
+                <h3 class="board-task-card__title">Performance benchmarking</h3>
+                <ul class="board-task-card__tags">
+                  <li class="board-task-card__tag">development</li>
+                  <li class="board-task-card__tag">performance</li>
+                </ul>
+                <div class="board-task-card__meta">
+                  <time class="board-task-card__date" datetime="2025-10-23"
+                    >23.10.2025</time
+                  >
+                  <span
+                    class="board-task-card__priority board-task-card__priority_medium"
+                    >medium</span
+                  >
+                </div>
+                <div class="board-task-card__assignees">
+                  <span class="board-task-card__avatar">RS</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- In Progress -->
+          <article class="board-card" data-id="b1" data-card="backlog">
+            <header class="board-card__header">
+              <div class="board-card__header-row">
+                <span class="board-card__dot"></span>
+                <h2 class="board-card__title">In Progress</h2>
+              </div>
+              <span class="board-card__count">2</span>
+            </header>
+
+            <ul class="board-card__list">
+              <li class="board-task-card js-task-open" data-id="t1">
+                <h3 class="board-task-card__title">Performance benchmarking</h3>
+                <ul class="board-task-card__tags">
+                  <li class="board-task-card__tag">development</li>
+                  <li class="board-task-card__tag">performance</li>
+                </ul>
+                <div class="board-task-card__meta">
+                  <time class="board-task-card__date" datetime="2025-10-23"
+                    >23.10.2025</time
+                  >
+                  <span
+                    class="board-task-card__priority board-task-card__priority_medium"
+                    >medium</span
+                  >
+                </div>
+                <div class="board-task-card__assignees">
+                  <span class="board-task-card__avatar">RS</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Review -->
+          <article class="board-card" data-id="b1" data-card="backlog">
+            <header class="board-card__header">
+              <div class="board-card__header-row">
+                <span class="board-card__dot"></span>
+                <h2 class="board-card__title">Review</h2>
+              </div>
+              <span class="board-card__count">0</span>
+            </header>
+
+            <ul class="board-card__list">
+              <li class="board-task-card js-task-open" data-id="t1">
+                <h3 class="board-task-card__title">Performance benchmarking</h3>
+                <ul class="board-task-card__tags">
+                  <li class="board-task-card__tag">development</li>
+                  <li class="board-task-card__tag">performance</li>
+                </ul>
+                <div class="board-task-card__meta">
+                  <time class="board-task-card__date" datetime="2025-10-23"
+                    >23.10.2025</time
+                  >
+                  <span
+                    class="board-task-card__priority board-task-card__priority_medium"
+                    >medium</span
+                  >
+                </div>
+                <div class="board-task-card__assignees">
+                  <span class="board-task-card__avatar">RS</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Done -->
+          <article class="board-card" data-id="b1" data-card="backlog">
+            <header class="board-card__header">
+              <div class="board-card__header-row">
+                <span class="board-card__dot"></span>
+                <h2 class="board-card__title">Done</h2>
+              </div>
+              <span class="board-card__count">1</span>
+            </header>
+
+            <ul class="board-card__list">
+              <li class="board-task-card js-task-open" data-id="t1">
+                <h3 class="board-task-card__title">Performance benchmarking</h3>
+                <ul class="board-task-card__tags">
+                  <li class="board-task-card__tag">development</li>
+                  <li class="board-task-card__tag">performance</li>
+                </ul>
+                <div class="board-task-card__meta">
+                  <time class="board-task-card__date" datetime="2025-10-23"
+                    >23.10.2025</time
+                  >
+                  <span
+                    class="board-task-card__priority board-task-card__priority_medium"
+                    >medium</span
+                  >
+                </div>
+                <div class="board-task-card__assignees">
+                  <span class="board-task-card__avatar">RS</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!-- ======= MODALS ======= -->
+    <!-- A) Task Create modal (можно переиспользовать Task Modal из dashboard) -->
+
+    <!-- B) Task Edit modal — ДЕЛАЕМ ПОТОМ ДИНАМИЧЕСКИ:
+    - на клик .js-task-open (карточка задачи) мы будем открывать модалку редактирования,
+      подставляя данные GET /api/tasks/:id.
+    - здесь намеренно НЕТ разметки, чтобы не дублировать “Task Modal” и не поддерживать два источника правды.-->
+  </body>
+</html>

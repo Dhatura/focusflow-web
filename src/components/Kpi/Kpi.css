@@ -3,11 +3,26 @@
   grid-template-columns: repeat(3, minmax(324px, 1fr));
   gap: var(--space-6);
 }
+.kpi__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.kpi__label {
+  display: flex;
+  justify-content: space-between;
+}
+.kpi__info {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+}
 .kpi__value {
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
+  color: var(--color-text);
+  font-size: var(--fs-xxl);
+  font-weight: 600;
 }
 .kpi__note {
   color: var(--color-success);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
 }

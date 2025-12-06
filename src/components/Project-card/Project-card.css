@@ -1,0 +1,109 @@
+.project-card {
+  cursor: pointer;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card__title {
+  margin: 0;
+}
+
+.project-card__badge {
+  border-radius: 99px;
+  background-color: var(--color-surface);
+  padding: 2px 8px;
+  font-size: var(--fs-sm);
+}
+
+.project-card__desc {
+  margin: 0;
+  color: rgb(71, 80, 99);
+  font-size: 16px;
+}
+
+.project-card__tags {
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-card__tag {
+  border-radius: 99px;
+  padding: 2px 8px;
+  font-size: var(--fs-sm);
+  border: 1px solid var(--color-border);
+}
+
+.project-card__progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2);
+  align-items: center;
+  color: rgb(71, 80, 99);
+  font-size: var(--fs-md);
+}
+
+.project-card__progress-bar {
+  grid-column: 1 / -1;
+  height: 8px;
+  border-radius: 99px;
+  background: #eef1f7;
+  overflow: hidden;
+  width: 100%;
+}
+
+.project-card__progress-bar-fill {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent-2)
+  );
+}
+
+.project-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card__members {
+  display: flex;
+}
+
+.project-card__avatar {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-weight: 500;
+  color: var(--color-surface);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-surface);
+  border-radius: 50%;
+  margin-right: -6px;
+}
+
+.project-card__shortcuts {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.project-card__shortcut {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+  border: none;
+}

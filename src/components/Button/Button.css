@@ -33,7 +33,19 @@
   cursor: not-allowed;
 }
 
+/* потом заменить на btn__round */
 .btn__close {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.btn__round {
   width: 36px;
   height: 36px;
   border-radius: 999px;

@@ -1,0 +1,17 @@
+.projects__intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 var(--space-6);
+}
+.projects__title {
+  margin: 0 0 var(--space-1);
+  font-size: 28px;
+}
+.projects__subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+.projects__create-btn {
+  height: 40px;
+}

@@ -1,0 +1,8 @@
+.board-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+}

@@ -7,6 +7,7 @@
   --color-text: #0d1222;
   --color-text-muted: #5b6476;
   --color-accent: #7c5cff; /* фиолетовый (основной) */
+  --color-accent-transparent: rgba(124, 92, 255, 0.55);
   --color-accent-2: #4ea1ff; /* голубой (вторичный) */
   --color-accent-3: #ffc94d; /* акцентный желтый */
   --color-accent-weak: #ede9fe;
