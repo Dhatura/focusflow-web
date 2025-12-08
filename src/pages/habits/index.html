@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <title>FocusFlow</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__logo">FocusFlow ∞</div>
+
+        <form class="header__search">
+          <input class="header__search-input js-search" placeholder="Search…" />
+        </form>
+
+        <button class="header__btn js-notif">
+          🔔 <span class="header__badge">2</span>
+        </button>
+        <button class="header__btn js-theme">🌓</button>
+
+        <div class="header__user">
+          U
+          <div class="header__menu is-hidden">
+            <a href="/src/pages/profile/index.html">Profile</a>
+            <a href="/src/pages/settings/index.html">Settings</a>
+            <button class="js-logout">Log out</button>
+          </div>
+        </div>
+
+        <!-- Выпадающий список уведомлений (скрыт) -->
+        <div class="notif js-notif is-hidden">
+          <div class="notif__header">Notifications</div>
+          <ul class="notif__list">
+            <li class="notif__item" data-id="n1">
+              <div class="notif__item-title">You were mentioned</div>
+              <div class="notif__item-meta">2m ago</div>
+            </li>
+            <li class="notif__item" data-id="n2">
+              <div class="notif__item-title">New project invite</div>
+              <div class="notif__item-meta">10m ago</div>
+            </li>
+          </ul>
+          <div class="notif__actions">
+            <button class="btn btn__sm">Clear all</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="/src/pages/dashboard/index.html"
+            >Dashboard</a
+          >
+          <a class="sidebar__link" href="/src/pages/projects/index.html"
+            >Projects</a
+          >
+          <a
+            class="sidebar__link sidebar__link_active"
+            href="/src/pages/habits/index.html"
+            >Habits</a
+          >
+          <a class="sidebar__link" href="/src/pages/profile/index.html"
+            >Profile</a
+          >
+          <!-- ВАЖНО: пока что открывается с хэшем: /index.html#profile -->
+          <a class="sidebar__link" href="/src/pages/settings/index.html#profile"
+            >Settings</a
+          >
+        </nav>
+      </aside>
+
+      <main class="habits main">
+        <!-- Page header -->
+        <section class="habits__intro">
+          <div>
+            <h1 class="habits__title">Habits</h1>
+            <p class="habits__subtitle">
+              Build lasting habits and track your progress
+            </p>
+          </div>
+          <button class="btn btn__primary habits__create-btn">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="habits__add-icon"
+            >
+              <path d="M5 12h14"></path>
+              <path d="M12 5v14"></path>
+            </svg>
+            Create Habit
+          </button>
+        </section>
+
+        <!-- KPI cards -->
+        <section class="kpi" aria-label="Key metrics">
+          <article class="kpi__item card">
+            <div class="kpi__label">
+              Total XP <span title="Trophy" aria-hidden="true">🏅</span>
+            </div>
+            <div class="kpi__info">
+              <div class="kpi__value">840</div>
+              <div class="kpi__note">+60 today</div>
+            </div>
+          </article>
+          <article class="kpi__item card">
+            <div class="kpi__label">
+              Longest Streak <span aria-hidden="true">🔥</span>
+            </div>
+            <div class="kpi__info">
+              <div class="kpi__value">14</div>
+              <div class="kpi__note">days</div>
+            </div>
+          </article>
+          <article class="kpi__item card">
+            <div class="kpi__label">
+              Active Habits <span aria-hidden="true">✅</span>
+            </div>
+            <div class="kpi__info">
+              <div class="kpi__value">5</div>
+              <div class="kpi__note">habits</div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Toolbar: search + filters -->
+        <section class="habits-toolbar" aria-label="Toolbar">
+          <div class="habits-toolbar__search">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="habits-toolbar__search-icon"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <!-- JS later: debounce search; hook below -->
+            <input
+              class="habits-toolbar__search-input js-habits-search"
+              type="search"
+              name="habits-search"
+              placeholder="Search habits…"
+            />
+          </div>
+
+          <div
+            class="habits-toolbar__filter"
+            role="tablist"
+            aria-label="Filter"
+          >
+            <!-- простые фильтры; позже сделаем как toggles в JS -->
+            <button class="btn btn__ghost habits-toolbar__btn" type="button">
+              All
+            </button>
+            <button class="btn habits-toolbar__btn" type="button">
+              Active
+            </button>
+            <button class="btn habits-toolbar__btn" type="button">
+              Archived
+            </button>
+          </div>
+        </section>
+
+        <!-- Grid of habits -->
+        <section class="habits-grid" aria-label="Habits list">
+          <!-- ===== Card ===== -->
+          <!-- JS later: при нажатии на кнопку редактирования на карточке привычки, мы должны провалитсья в модальное окно редактирования этой привычки -->
+          <article class="habit-card card" data-id="h1">
+            <header class="habit-card__header">
+              <div class="habit-card__icon" aria-hidden="true">🧘‍♀️</div>
+              <div class="habit-card__title">
+                <h3 class="habit-card__name">Morning Meditation</h3>
+                <span class="habit-card__badge">Every day</span>
+              </div>
+              <!-- JS later: при нажатии на кнопку должно выполняться действие - привычка выполнена сегодня (занесена информация в календарь хобби и увеличена стата повторений), иконка визуально сменилась на "выполненную" -->
+              <button
+                class="habit-card__state"
+                title="Complete today"
+                aria-label="Complete today"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="habit-card__state-icon habit-card__state-icon_not-completed"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+              </button>
+            </header>
+
+            <div class="habit-card__content">
+              <div class="habit-card__meta">
+                <div class="habit-card__achievement">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="habit-card__achievement-icon"
+                  >
+                    <path
+                      d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                    ></path>
+                  </svg>
+                  <span class="habit-card__achievement-name">Streak</span>
+                </div>
+                <p class="habit-card__achievement-data">14 days</p>
+              </div>
+              <div class="habit-card__meta">
+                <div class="habit-card__achievement">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="habit-card__achievement-icon"
+                  >
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                    <path d="M4 22h16"></path>
+                    <path
+                      d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"
+                    ></path>
+                    <path
+                      d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"
+                    ></path>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                  </svg>
+                  <span class="habit-card__achievement-name">XP</span>
+                </div>
+                <p class="habit-card__achievement-data">280</p>
+              </div>
+            </div>
+
+            <footer class="habit-card__footer habit-card__actions">
+              <!-- JS later: открывать попап-историю (неделя/месяц) -->
+              <button
+                class="habit-card__btn js-open-history"
+                type="button"
+                aria-label="Open habit history"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="habit-card__action-icon"
+                >
+                  <path d="M8 2v4"></path>
+                  <path d="M16 2v4"></path>
+                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                  <path d="M3 10h18"></path>
+                </svg>
+                History
+              </button>
+
+              <!-- JS later: открывать модалку редактирования (данные конкретной привычки) -->
+              <button
+                class="habit-card__btn js-open-edit"
+                type="button"
+                aria-label="Edit habit"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="habit-card__action-icon"
+                >
+                  <path
+                    d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                  ></path>
+                </svg>
+              </button>
+
+              <!-- JS later: архивирование привички-->
+              <button
+                class="habit-card__btn js-archive-habit"
+                type="button"
+                title="Archive"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="habit-card__action-icon"
+                >
+                  <rect width="20" height="5" x="2" y="3" rx="1"></rect>
+                  <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"></path>
+                  <path d="M10 12h4"></path>
+                </svg>
+              </button>
+
+              <!-- JS later: удаление привички-->
+              <button
+                class="habit-card__btn js-delete-habit"
+                type="button"
+                title="Delete"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="habit-card__action-icon"
+                >
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  <line x1="10" x2="10" y1="11" y2="17"></line>
+                  <line x1="14" x2="14" y1="11" y2="17"></line>
+                </svg>
+              </button>
+            </footer>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===== Overlay + Modals ===== -->
+
+    <!-- A) Create Habit -->
+    <article class="modal js-modal is-hidden" aria-hidden="true">
+      <!-- Overlay + Modal: статично (скрытие/показ позже сделаем JS) -->
+      <div class="new-habit-modal">
+        <!-- Header -->
+        <header class="new-habit-modal__header">
+          <h2 class="new-habit-modal__title">Create New Habit</h2>
+          <button class="btn__close js-close" type="button" aria-label="Close">
+            ×
+          </button>
+        </header>
+
+        <!-- Project Name -->
+        <!-- JS later: валидация + дизабл кнопки Create, пока пусто -->
+        <form class="form">
+          <div class="form__field">
+            <label class="form__label" for="hname">Habit Name</label>
+            <!-- JS later: валидация; пока пусто — кнопка Create disabled -->
+            <input
+              class="form__input form__input_white js-create-name"
+              type="text"
+              id="hname"
+              placeholder="e.g., Morning meditation"
+              required
+            />
+          </div>
+
+          <!-- Icons -->
+          <div class="form__field">
+            <label class="form__label" for="icon">Icon</label>
+            <div class="new-habit-modal__icons-grid">
+              <!-- JS later: выбор иконки (radio-поведение) по data-value -->
+
+              <button
+                class="new-habit-modal__icon-item new-habit-modal__icon-item_active js-icon"
+                type="button"
+                data-value="🎯"
+              >
+                🎯
+              </button>
+              <button
+                class="new-habit-modal__icon-item js-icon"
+                type="button"
+                data-value="📚"
+              >
+                📚
+              </button>
+              <button
+                class="new-habit-modal__icon-item js-icon"
+                type="button"
+                data-value="💪"
+              >
+                💪
+              </button>
+              <button
+                class="new-habit-modal__icon-item js-icon"
+                type="button"
+                data-value="🌱"
+              >
+                🌱
+              </button>
+            </div>
+          </div>
+
+          <!-- Periodicity -->
+          <div class="form__field">
+            <label class="form__label" for="period">Periodicity</label>
+            <div class="form__select-wrap">
+              <select class="form__select" name="period" id="period">
+                <option selected>Every day</option>
+                <option>Weekdays only</option>
+                <option>3 times per week</option>
+                <option>Custom schedule</option>
+              </select>
+              <svg
+                class="form__select-caret"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+              >
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Reminders -->
+          <div class="form__field new-habit-modal__reminder">
+            <div>
+              <label class="form__label" for="rem">Reminders</label>
+              <p class="new-habit-modal__rem-desc">Get notified daily</p>
+            </div>
+            <div class="toggle" id="rem" role="switch" aria-checked="false">
+              <span class="toggle__dot"></span>
+            </div>
+          </div>
+
+          <!-- Create -->
+          <div class="new-project-modal__create">
+            <button class="btn js-close-create" type="button">Cancel</button>
+            <!-- JS later: disabled until name is not empty -->
+            <button
+              class="btn btn__primary btn__lg js-create-submit"
+              type="button"
+              disabled
+            >
+              Create Habit
+            </button>
+          </div>
+        </form>
+      </div>
+    </article>
+
+    <!-- B) Edit Habit — ДЕЛАЕМ ПОТОМ ДИНАМИЧЕСКИ:
+    - при клике на ✏️ (.js-open-edit) открывать модалку редактирования,
+    заполняя поля данными GET /api/habits/:id.
+    - разметку редактирования не дублируем, чтобы не поддерживать два источника правды.
+    -->
+
+    <!-- C) History popups — ДЕЛАЕМ ПОТОМ ДИНАМИЧЕСКИ:
+    - на клик 📅 (.js-open-history) рендерим поп-ап с двумя табами Week/Month.
+    - Week: 7 круглых ячеек с состояниями; Month: календарная сетка.
+    - Добавим как общий компонент "HistoryModal", который принимает habitId и диапазон дат.
+    -->
+  </body>
+</html>

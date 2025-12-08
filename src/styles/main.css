@@ -48,6 +48,15 @@
 @import url("../components/Board-card/Board-card.css");
 @import url("../components/Board-task-card/Board-task-card.css");
 
+/* Habits page */
+@import url("../components/Habits/Habits.css");
+@import url("../components/Habits-toolbar/Habits-toolbar.css");
+@import url("../components/Habits-grid/Habits-grid.css");
+@import url("../components/Habit-card/Habit-card.css");
+
+/* Habits Modals */
+@import url("../components/New-habit-modal/New-habit-modal.css");
+
 /* Profile page */
 @import url("../components/Profile/Profile.css");
 @import url("../components/Profile-hero/Profile-hero.css");

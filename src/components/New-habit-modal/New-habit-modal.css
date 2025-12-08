@@ -1,0 +1,53 @@
+.new-habit-modal {
+  width: min(500px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-2);
+  display: grid;
+  row-gap: var(--space-6);
+}
+
+.new-habit-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-habit-modal__title {
+  margin: 0;
+}
+
+.new-habit-modal__icons-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.new-habit-modal__icon-item {
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: #fff;
+  display: grid;
+  place-content: center;
+  font-size: var(--fs-xxl);
+  padding: var(--space-3);
+  cursor: pointer;
+}
+.new-habit-modal__icon-item_active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-weak);
+}
+
+.new-habit-modal__reminder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-habit-modal__rem-desc {
+  margin: 0;
+  color: var(--color-text-muted);
+}

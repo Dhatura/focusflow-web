@@ -1,0 +1,36 @@
+.habits-toolbar {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+  margin: var(--space-6) 0;
+}
+.habits-toolbar__search {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: 99px;
+  transition: outline 0.15s ease-out;
+}
+.habits-toolbar__search:focus-within {
+  outline: 3px solid var(--color-accent-transparent);
+}
+
+.habits-toolbar__search-input {
+  flex: 1 1 auto;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.habits-toolbar__filter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.habits-toolbar__btn {
+  border-radius: 99px;
+  border-color: transparent;
+}
