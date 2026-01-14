@@ -52,6 +52,15 @@ a:hover {
   width: min(1200px, 100% - 32px);
   margin: 0 auto;
 } */
+
+[hidden] {
+  display: none !important;
+}
+
+.is-modal-open {
+  overflow: hidden;
+}
+
 .is-hidden {
   display: none !important;
 }

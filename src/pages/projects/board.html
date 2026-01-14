@@ -166,7 +166,11 @@
             </button>
 
             <!-- в будущем должно открываться модальное окно создания задачи через js -->
-            <button class="btn btn__primary board__create-btn">
+            <button
+              class="btn btn__primary board__create-btn"
+              data-modal-open="new-task"
+              type="button"
+            >
               <svg
                 width="16"
                 height="16"
@@ -364,5 +368,7 @@
     - на клик .js-task-open (карточка задачи) мы будем открывать модалку редактирования,
       подставляя данные GET /api/tasks/:id.
     - здесь намеренно НЕТ разметки, чтобы не дублировать “Task Modal” и не поддерживать два источника правды.-->
+
+    <script type="module" src="../../js/app.js"></script>
   </body>
 </html>

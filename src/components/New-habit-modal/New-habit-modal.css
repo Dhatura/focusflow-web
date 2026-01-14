@@ -9,6 +9,7 @@
   box-shadow: var(--shadow-2);
   display: grid;
   row-gap: var(--space-6);
+  z-index: 100;
 }
 
 .new-habit-modal__header {

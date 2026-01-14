@@ -82,7 +82,11 @@
               Build lasting habits and track your progress
             </p>
           </div>
-          <button class="btn btn__primary habits__create-btn">
+          <button
+            class="btn btn__primary habits__create-btn"
+            data-modal-open="new-habit"
+            type="button"
+          >
             <svg
               width="16"
               height="16"
@@ -366,13 +370,24 @@
     <!-- ===== Overlay + Modals ===== -->
 
     <!-- A) Create Habit -->
-    <article class="modal js-modal is-hidden" aria-hidden="true">
+    <article
+      class="modal js-modal"
+      data-modal="new-habit"
+      hidden
+      aria-hidden="true"
+    >
       <!-- Overlay + Modal: статично (скрытие/показ позже сделаем JS) -->
+      <div class="modal__overlay js-create-overlay" data-modal-overlay></div>
       <div class="new-habit-modal">
         <!-- Header -->
         <header class="new-habit-modal__header">
           <h2 class="new-habit-modal__title">Create New Habit</h2>
-          <button class="btn__close js-close" type="button" aria-label="Close">
+          <button
+            class="btn__close js-close"
+            data-modal-close
+            type="button"
+            aria-label="Close"
+          >
             ×
           </button>
         </header>
@@ -488,5 +503,7 @@
     - Week: 7 круглых ячеек с состояниями; Month: календарная сетка.
     - Добавим как общий компонент "HistoryModal", который принимает habitId и диапазон дат.
     -->
+
+    <script type="module" src="../../js/app.js"></script>
   </body>
 </html>
